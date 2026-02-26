@@ -64,12 +64,12 @@ export default function Hero() {
 
               {/* ── Frosted Panel — sits on cream bg section ── */}
               <div
-                className="relative bg-white/[0.55] backdrop-blur-2xl rounded-[1.1rem] sm:rounded-[1.25rem] md:rounded-[1.4rem] border border-white/40"
+                className="relative bg-white/[0.45] backdrop-blur-2xl rounded-[1.1rem] sm:rounded-[1.25rem] md:rounded-[1.4rem] border border-white/40"
                 style={{ boxShadow: "0 4px 40px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.02)" }}
               >
                 {/* Panel grain — materiality */}
                 <div
-                  className="absolute inset-0 rounded-[inherit] pointer-events-none opacity-[0.02]"
+                  className="absolute inset-0 rounded-[inherit] pointer-events-none opacity-[0.05]"
                   style={{
                     backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
                   }}
@@ -142,7 +142,14 @@ export default function Hero() {
                     </span>
                   </div>
                   {/* 10:00 — frosted glass */}
-                  <div className="bg-cream/[0.55] backdrop-blur-xl text-foreground px-4 py-2.5 sm:px-5 sm:py-3 flex flex-col items-center justify-center border-l border-white/30">
+                  <div className="relative bg-cream/[0.45] backdrop-blur-xl text-foreground px-4 py-2.5 sm:px-5 sm:py-3 flex flex-col items-center justify-center border-l border-white/30">
+                    {/* Grain on glass badge */}
+                    <div
+                      className="absolute inset-0 pointer-events-none opacity-[0.04]"
+                      style={{
+                        backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+                      }}
+                    />
                     <span
                       className="block text-[1.15rem] sm:text-[1.3rem] font-[EloquiaDisplay] leading-none"
                       style={{ fontVariantNumeric: "tabular-nums" }}
