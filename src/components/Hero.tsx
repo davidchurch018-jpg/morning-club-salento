@@ -127,20 +127,7 @@ export default function Hero() {
                 </div>
               </div>
 
-              {/* ── Right-edge frosted diffusion — soft blend into photo ── */}
-              <div
-                className="hidden md:block absolute inset-y-4 pointer-events-none"
-                style={{
-                  right: "-2.5rem",
-                  width: "5rem",
-                  background: "linear-gradient(90deg, rgba(245,240,232,0.38) 0%, rgba(245,240,232,0.10) 55%, transparent 100%)",
-                  backdropFilter: "blur(18px)",
-                  WebkitBackdropFilter: "blur(18px)",
-                  borderRadius: "0 1rem 1rem 0",
-                  maskImage: "linear-gradient(180deg, transparent 0%, black 12%, black 88%, transparent 100%)",
-                  WebkitMaskImage: "linear-gradient(180deg, transparent 0%, black 12%, black 88%, transparent 100%)",
-                }}
-              />
+
               <div
                 className="reveal delay-600 absolute bottom-10 sm:bottom-12 md:bottom-14 z-20"
                 style={{
