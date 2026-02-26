@@ -18,9 +18,12 @@ export default function Hero() {
           quality={85}
         />
 
-        {/* Subtle gradient — depth without killing photo */}
+        {/* ── CREAM BACKGROUND SECTION — left ~38% of hero ── */}
+        <div className="absolute inset-y-0 left-0 w-full md:w-[40%] lg:w-[38%] bg-cream z-[1]" />
+
+        {/* Subtle gradient on photo side */}
         <div
-          className="absolute inset-0 z-[1] pointer-events-none"
+          className="absolute inset-0 z-[2] pointer-events-none"
           style={{
             background: [
               "linear-gradient(90deg, rgba(0,0,0,0.04) 0%, transparent 30%)",
@@ -31,7 +34,7 @@ export default function Hero() {
 
         {/* Grain */}
         <div
-          className="absolute inset-0 z-[2] pointer-events-none opacity-[0.04]"
+          className="absolute inset-0 z-[3] pointer-events-none opacity-[0.04]"
           style={{
             backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
           }}
@@ -42,49 +45,27 @@ export default function Hero() {
           <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-20 md:py-16">
 
             {/* ── Panel container (relative anchor for sticker + badges) ── */}
-            <div className="relative w-full md:w-[54%] lg:w-[48%] xl:w-[46%]">
+            <div className="relative w-full md:w-[54%] lg:w-[48%] xl:w-[46%] overflow-visible">
 
               {/* ── FRESH START sticker — top-left corner of panel, overlapping edge ── */}
               <div
-                className="reveal delay-100 absolute -top-7 -left-3 sm:-top-8 sm:-left-4 md:-top-9 md:-left-5 z-20"
-                style={{ transform: "rotate(-12deg)", filter: "drop-shadow(2px 3px 3px rgba(0,0,0,0.18))" }}
+                className="reveal delay-100 absolute -top-8 -left-4 sm:-top-10 sm:-left-5 md:-top-12 md:-left-6 z-20"
+                style={{ transform: "rotate(-12deg)", filter: "drop-shadow(2px 3px 4px rgba(0,0,0,0.2))" }}
               >
-                <div className="relative">
-                  {/* Tag shape via SVG */}
-                  <svg
-                    viewBox="0 0 152 52"
-                    className="w-[108px] sm:w-[125px] md:w-[135px] h-auto"
-                    aria-hidden="true"
-                  >
-                    {/* Tag body — pointed left, rounded right */}
-                    <path
-                      d="M13,1 H146 C149.3,1 151,3.5 151,6 V46 C151,48.5 149.3,51 146,51 H13 C11,51 9.2,50 8.2,48.2 L1,26 L8.2,3.8 C9.2,2 11,1 13,1 Z"
-                      fill="#7A2820"
-                    />
-                    {/* Hole punch */}
-                    <circle cx="126" cy="13" r="4.2" fill="#5E1F16" />
-                    <circle cx="126" cy="13" r="2.8" fill="#7A2820" opacity="0.4" />
-                    {/* Cherry / berry decoration */}
-                    <circle cx="138" cy="4" r="5.5" fill="#7A2820" />
-                    <circle cx="134" cy="6" r="4" fill="#8B2D22" />
-                    <path d="M136,4 C135.5,0 137,-2 138,-3.5" stroke="#5A1912" strokeWidth="1.4" fill="none" strokeLinecap="round" />
-                  </svg>
-                  {/* Text overlay */}
-                  <div className="absolute inset-0 flex flex-col justify-center pl-[18px] sm:pl-[22px] pr-3">
-                    <span className="text-[0.62rem] sm:text-[0.72rem] md:text-[0.78rem] font-[EloquiaDisplay] text-cream tracking-[0.04em] uppercase leading-none">
-                      Fresh Start
-                    </span>
-                    <span className="text-[0.3rem] sm:text-[0.34rem] font-[SatoshiMedium] text-cream/50 tracking-[0.1em] uppercase mt-[3px]">
-                      Est. 3034
-                    </span>
-                  </div>
-                </div>
+                <Image
+                  src="/fresh-start.png"
+                  alt="Fresh Start"
+                  width={280}
+                  height={100}
+                  className="w-[120px] sm:w-[140px] md:w-[160px] h-auto"
+                  priority
+                />
               </div>
 
-              {/* ── Frosted Panel ── */}
+              {/* ── Frosted Panel — sits on cream bg section ── */}
               <div
-                className="relative bg-white/[0.52] backdrop-blur-2xl rounded-[1.1rem] sm:rounded-[1.25rem] md:rounded-[1.4rem] border border-white/50"
-                style={{ boxShadow: "0 4px 40px rgba(0,0,0,0.07), 0 1px 3px rgba(0,0,0,0.03)" }}
+                className="relative bg-white/[0.55] backdrop-blur-2xl rounded-[1.1rem] sm:rounded-[1.25rem] md:rounded-[1.4rem] border border-white/40"
+                style={{ boxShadow: "0 4px 40px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.02)" }}
               >
                 {/* Panel grain — materiality */}
                 <div
@@ -96,15 +77,12 @@ export default function Hero() {
 
                 <div className="relative px-7 sm:px-9 md:px-10 lg:px-12 pt-12 sm:pt-14 md:pt-16 pb-10 sm:pb-12 md:pb-14">
 
-                  {/* ── Headline: 3 lines ── */}
-                  <h1 className="reveal delay-200">
-                    <span className="block text-[2.1rem] sm:text-[2.8rem] md:text-[3.3rem] lg:text-[3.9rem] leading-[0.92] tracking-[-0.015em] text-foreground font-[EloquiaDisplay] uppercase">
-                      Morning
+                  {/* ── Headline: 2 lines ── */}
+                  <h1 className="reveal delay-200" style={{ fontWeight: 600 }}>
+                    <span className="block text-[2.1rem] sm:text-[2.8rem] md:text-[3.3rem] lg:text-[3.9rem] leading-[0.92] tracking-[-0.015em] text-foreground font-[EloquiaDisplay]">
+                      Morning Club
                     </span>
-                    <span className="block text-[2.1rem] sm:text-[2.8rem] md:text-[3.3rem] lg:text-[3.9rem] leading-[0.92] tracking-[-0.015em] text-foreground font-[EloquiaDisplay] uppercase">
-                      Club
-                    </span>
-                    <span className="block text-[2.1rem] sm:text-[2.8rem] md:text-[3.3rem] lg:text-[3.9rem] leading-[0.92] tracking-[-0.015em] text-foreground font-[EloquiaDisplay] uppercase">
+                    <span className="block text-[2.1rem] sm:text-[2.8rem] md:text-[3.3rem] lg:text-[3.9rem] leading-[0.92] tracking-[-0.015em] text-foreground font-[EloquiaDisplay]">
                       Salento
                     </span>
                   </h1>
@@ -142,12 +120,15 @@ export default function Hero() {
                 </div>
               </div>
 
-              {/* ── Date badge — unified 01/MAR + 10:00, bottom-right panel overlap ── */}
+              {/* ── Date badge — red ends at panel right edge, glass overflows outside ── */}
               <div
-                className="reveal delay-600 absolute bottom-4 sm:bottom-5 right-4 sm:right-6 md:-right-2 lg:-right-4"
-                style={{ filter: "drop-shadow(2px 3px 6px rgba(0,0,0,0.13))" }}
+                className="reveal delay-600 absolute bottom-10 sm:bottom-12 md:bottom-14 z-20"
+                style={{
+                  right: "-6.3rem",
+                  filter: "drop-shadow(2px 3px 6px rgba(0,0,0,0.13))",
+                }}
               >
-                <div className="flex overflow-hidden rounded-2xl">
+                <div className="flex rounded-2xl overflow-hidden">
                   {/* 01 / MAR — red */}
                   <div className="bg-red text-cream px-4 py-2.5 sm:px-5 sm:py-3 text-center flex flex-col items-center justify-center min-w-[3rem] sm:min-w-[3.4rem]">
                     <span
