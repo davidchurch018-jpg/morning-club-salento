@@ -44,9 +44,9 @@ export default function Hero() {
             {/* ── Panel container (relative anchor for sticker + badges) ── */}
             <div className="relative w-full md:w-[54%] lg:w-[48%] xl:w-[46%]">
 
-              {/* ── FRESH START sticker — tag shape, top-left, overlapping panel ── */}
+              {/* ── FRESH START sticker — top-left corner of panel, overlapping edge ── */}
               <div
-                className="reveal delay-100 absolute -top-5 -left-1 sm:-top-6 sm:-left-2 z-20"
+                className="reveal delay-100 absolute -top-7 -left-3 sm:-top-8 sm:-left-4 md:-top-9 md:-left-5 z-20"
                 style={{ transform: "rotate(-12deg)", filter: "drop-shadow(2px 3px 3px rgba(0,0,0,0.18))" }}
               >
                 <div className="relative">
@@ -144,7 +144,7 @@ export default function Hero() {
 
               {/* ── Date badge — unified 01/MAR + 10:00, bottom-right panel overlap ── */}
               <div
-                className="reveal delay-600 absolute -bottom-5 sm:-bottom-6 right-6 sm:right-8 md:-right-2 lg:-right-4"
+                className="reveal delay-600 absolute bottom-4 sm:bottom-5 right-4 sm:right-6 md:-right-2 lg:-right-4"
                 style={{ filter: "drop-shadow(2px 3px 6px rgba(0,0,0,0.13))" }}
               >
                 <div className="flex overflow-hidden rounded-2xl">
@@ -160,8 +160,8 @@ export default function Hero() {
                       MAR
                     </span>
                   </div>
-                  {/* 10:00 — warm gray */}
-                  <div className="bg-[#E2DED6] text-foreground px-4 py-2.5 sm:px-5 sm:py-3 flex flex-col items-center justify-center">
+                  {/* 10:00 — frosted glass */}
+                  <div className="bg-cream/[0.55] backdrop-blur-xl text-foreground px-4 py-2.5 sm:px-5 sm:py-3 flex flex-col items-center justify-center border-l border-white/30">
                     <span
                       className="block text-[1.15rem] sm:text-[1.3rem] font-[EloquiaDisplay] leading-none"
                       style={{ fontVariantNumeric: "tabular-nums" }}
