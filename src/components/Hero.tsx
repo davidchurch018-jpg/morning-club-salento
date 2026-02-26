@@ -66,10 +66,10 @@ export default function Hero() {
               <div
                 className="relative rounded-[1.1rem] sm:rounded-[1.25rem] md:rounded-[1.4rem]"
                 style={{
-                  background: "rgba(245,240,232,0.68)",
+                  background: "rgba(255,255,255,0.18)",
                   backdropFilter: "blur(44px) saturate(1.08)",
                   WebkitBackdropFilter: "blur(44px) saturate(1.08)",
-                  border: "1px solid rgba(255,255,255,0.15)",
+                  border: "1px solid rgba(255,255,255,0.12)",
                   boxShadow: "0 2px 20px rgba(0,0,0,0.03), 0 0.5px 1px rgba(0,0,0,0.015)",
                 }}
               >
