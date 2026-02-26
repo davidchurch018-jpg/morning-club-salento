@@ -39,3 +39,16 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# env
+.env.local
+.env*.local
+
+# old assets
+public/hero-bg-old*.jpg
+public/hero-bg.png
+public/logo-illustration-old*.jpg
+public/fonts/*.otf
+public/fonts/Mocha*.woff2
+src/components/AlternatingText.tsx
+src/components/Concept.tsx

@@ -1,26 +1,166 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ── Eloquia Font Duo ── */
+@font-face {
+  font-family: "EloquiaDisplay";
+  src: url("/fonts/EloquiaDisplay.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "EloquiaText";
+  src: url("/fonts/EloquiaText.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SatoshiMedium";
+  src: url("/fonts/SatoshiMedium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: #F5F0E8;
+  --color-foreground: #171717;
+  --color-cream: #F5F0E8;
+  --color-red: #B63A2B;
+  --color-red-dark: #9A3024;
+  --color-orange: #C4502A;
+  --color-slate: #3d4555;
+  --color-blue-gray: #667085;
+  --color-warm-gray: #d6d0c4;
+  --font-display: "EloquiaDisplay", Georgia, serif;
+  --font-body: "SatoshiMedium", system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Marker underline effect */
+.marker-underline {
+  background-image: linear-gradient(120deg, var(--color-red) 0%, var(--color-orange) 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0.3em;
+  background-position: 0 88%;
 }
 
+/* Stamp badge — unified system */
+.stamp-badge {
+  display: inline-block;
+  border: 2px solid var(--color-red);
+  border-radius: 2px;
+  padding: 0.15em 0.5em;
+  font-family: "EloquiaDisplay", Georgia, serif;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-red);
+  transform: rotate(-2deg);
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.08);
+}
+
+/* Focus: use focus-visible for keyboard-only ring */
+input:focus-visible, textarea:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible {
+  outline: 2px solid var(--color-red);
+  outline-offset: 2px;
+}
+input:focus:not(:focus-visible), textarea:focus:not(:focus-visible), select:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Smooth scroll + account for fixed header */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
+}
+
+/* Mobile: prevent iOS zoom on input focus */
+input, textarea, select {
+  font-size: 16px;
+}
+
+/* Safe area for notch devices */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-cream);
+  color: var(--color-foreground);
+  font-family: var(--font-body);
+  padding-top: env(safe-area-inset-top);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+/* Loading spinner */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.spinner {
+  animation: spin 0.6s linear infinite;
+}
+
+/* ── Reveal animation system ── */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateX(-12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.reveal {
+  opacity: 0;
+  animation: fadeSlideUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.reveal-left {
+  opacity: 0;
+  animation: fadeSlideIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+.delay-700 { animation-delay: 0.7s; }
+
+/* Marker swipe — editorial underline */
+.marker-swipe {
+  background: linear-gradient(120deg, var(--color-red) 0%, var(--color-orange) 100%);
+  background-repeat: no-repeat;
+  background-size: 0% 0.35em;
+  background-position: 0 88%;
+  animation: swipeIn 0.6s 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes swipeIn {
+  to { background-size: 100% 0.35em; }
+}
+
+/* Curatorial label */
+.label-curatorial {
+  display: inline-block;
+  font-family: "EloquiaDisplay", Georgia, serif;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-cream);
+  border: 1.5px solid currentColor;
+  padding: 0.2em 0.6em;
+  transform: rotate(-2deg);
+  opacity: 0.85;
+}
+
+/* Honeypot: visually hidden but accessible to bots */
+.hp-field {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 0;
+  width: 0;
+  z-index: -1;
+  overflow: hidden;
 }

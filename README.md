@@ -1,36 +1,132 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Morning Club Salento — Landing Page
 
-## Getting Started
+> Coffee & Disco · Next.js + TailwindCSS · Google Sheets form submission
 
-First, run the development server:
+---
+
+## File Tree
+
+```
+morning-club/
+├── public/
+│   ├── fonts/
+│   │   ├── MochaBubble.woff2
+│   │   └── MochaSans.woff2
+│   ├── hero-bg.jpg
+│   └── logo-illustration.jpg
+├── src/
+│   ├── app/
+│   │   ├── globals.css          # @font-face, palette, utility classes
+│   │   ├── layout.tsx           # Root layout (meta, lang="it")
+│   │   └── page.tsx             # Pagina principale
+│   ├── components/
+│   │   ├── AlternatingText.tsx  # Lettera per lettera: Sans ↔ Bubble
+│   │   ├── Header.tsx           # Fixed header + CTA
+│   │   ├── Hero.tsx             # Composizione tipografica grande
+│   │   ├── Concept.tsx          # Micro-sezione concept
+│   │   ├── SignupForm.tsx       # Form con validazione inline
+│   │   └── Footer.tsx           # Footer minimale
+│   └── lib/
+│       └── submitForm.ts        # Helper POST → Google Sheets
+├── .env.local                   # NEXT_PUBLIC_APPS_SCRIPT_URL
+├── package.json
+└── README.md
+```
+
+---
+
+## Setup Locale
+
+### 1. Installa dipendenze
+
+```bash
+cd morning-club
+npm install
+```
+
+### 2. Avvia dev server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Apri [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Build di produzione
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build && npm start
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Setup Google Sheets + Apps Script
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Passo 1: Crea un Google Sheet
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Vai su [sheets.google.com](https://sheets.google.com) e crea un nuovo foglio.
+2. Nella **riga 1** aggiungi queste intestazioni (esattamente così):
 
-## Deploy on Vercel
+| A | B | C | D | E | F |
+|---|---|---|---|---|---|
+| timestamp | nome | cognome | email | telefono | instagram |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Passo 2: Crea lo script
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Nel foglio, vai su **Estensioni → Apps Script**
+2. Cancella il codice di default e incolla questo:
+
+```javascript
+function doPost(e) {
+  try {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    var data = JSON.parse(e.postData.contents);
+
+    sheet.appendRow([
+      new Date(),
+      data.nome || "",
+      data.cognome || "",
+      data.email || "",
+      data.telefono || "",
+      data.instagram || "",
+    ]);
+
+    return ContentService
+      .createTextOutput(JSON.stringify({ result: "success" }))
+      .setMimeType(ContentService.MimeType.JSON);
+  } catch (err) {
+    return ContentService
+      .createTextOutput(JSON.stringify({ result: "error", error: err.toString() }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+```
+
+3. Salva (Ctrl+S).
+
+### Passo 3: Deploy come Web App
+
+1. Clicca **Deploy → Nuova distribuzione**
+2. Tipo: **App web**
+3. Esegui come: **Me**
+4. Chi ha accesso: **Chiunque**
+5. Clicca **Distribuisci** → copia l'URL generato.
+
+### Passo 4: Configura l'URL nella landing
+
+Apri `.env.local` e sostituisci il placeholder:
+
+```
+NEXT_PUBLIC_APPS_SCRIPT_URL=https://script.google.com/macros/s/IL_TUO_ID/exec
+```
+
+Riavvia il dev server (`npm run dev`). Il form ora invia i dati al tuo Google Sheet.
+
+---
+
+## Note
+
+- **Font**: I file `.woff2` in `public/fonts/` sono convertiti dai `.ttf` Mocha Outline (Bubble) e Mocha Sans.
+- **CORS**: Il `Content-Type: text/plain` nel fetch evita il preflight CORS con Apps Script.
+- **Privacy**: La checkbox è obbligatoria. Non vengono salvate chiavi segrete nel client.
+- **Performance**: Solo CSS puro per le animazioni, nessuna libreria aggiuntiva.
