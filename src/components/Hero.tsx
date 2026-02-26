@@ -62,16 +62,23 @@ export default function Hero() {
                 />
               </div>
 
-              {/* ── Frosted Panel — sits on cream bg section ── */}
+              {/* ── Frosted Acrylic Panel ── */}
               <div
-                className="relative bg-white/[0.28] backdrop-blur-2xl rounded-[1.1rem] sm:rounded-[1.25rem] md:rounded-[1.4rem] border border-white/30"
-                style={{ boxShadow: "0 4px 40px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.02)" }}
+                className="relative rounded-[1.1rem] sm:rounded-[1.25rem] md:rounded-[1.4rem]"
+                style={{
+                  background: "rgba(245,240,232,0.68)",
+                  backdropFilter: "blur(44px) saturate(1.08)",
+                  WebkitBackdropFilter: "blur(44px) saturate(1.08)",
+                  border: "1px solid rgba(255,255,255,0.15)",
+                  boxShadow: "0 2px 20px rgba(0,0,0,0.03), 0 0.5px 1px rgba(0,0,0,0.015)",
+                }}
               >
-                {/* Panel grain — materiality */}
+                {/* Panel grain — satin materiality */}
                 <div
-                  className="absolute inset-0 rounded-[inherit] pointer-events-none opacity-[0.09]"
+                  className="absolute inset-0 rounded-[inherit] pointer-events-none opacity-[0.07]"
                   style={{
-                    backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+                    backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+                    mixBlendMode: "multiply",
                   }}
                 />
 
@@ -120,12 +127,25 @@ export default function Hero() {
                 </div>
               </div>
 
-              {/* ── Date badge — red ends at panel right edge, glass overflows outside ── */}
+              {/* ── Right-edge frosted diffusion — soft blend into photo ── */}
+              <div
+                className="hidden md:block absolute inset-y-4 pointer-events-none"
+                style={{
+                  right: "-2.5rem",
+                  width: "5rem",
+                  background: "linear-gradient(90deg, rgba(245,240,232,0.38) 0%, rgba(245,240,232,0.10) 55%, transparent 100%)",
+                  backdropFilter: "blur(18px)",
+                  WebkitBackdropFilter: "blur(18px)",
+                  borderRadius: "0 1rem 1rem 0",
+                  maskImage: "linear-gradient(180deg, transparent 0%, black 12%, black 88%, transparent 100%)",
+                  WebkitMaskImage: "linear-gradient(180deg, transparent 0%, black 12%, black 88%, transparent 100%)",
+                }}
+              />
               <div
                 className="reveal delay-600 absolute bottom-10 sm:bottom-12 md:bottom-14 z-20"
                 style={{
                   right: "-6.3rem",
-                  filter: "drop-shadow(2px 3px 6px rgba(0,0,0,0.13))",
+                  filter: "drop-shadow(1px 2px 5px rgba(0,0,0,0.10))",
                 }}
               >
                 <div className="flex rounded-2xl overflow-hidden">
@@ -141,13 +161,22 @@ export default function Hero() {
                       MAR
                     </span>
                   </div>
-                  {/* 10:00 — frosted glass */}
-                  <div className="relative bg-cream/[0.28] backdrop-blur-xl text-foreground px-4 py-2.5 sm:px-5 sm:py-3 flex flex-col items-center justify-center border-l border-white/25">
+                  {/* 10:00 — frosted acrylic */}
+                  <div
+                    className="relative text-foreground px-4 py-2.5 sm:px-5 sm:py-3 flex flex-col items-center justify-center"
+                    style={{
+                      background: "rgba(245,240,232,0.55)",
+                      backdropFilter: "blur(32px) saturate(1.08)",
+                      WebkitBackdropFilter: "blur(32px) saturate(1.08)",
+                      borderLeft: "1px solid rgba(255,255,255,0.12)",
+                    }}
+                  >
                     {/* Grain on glass badge */}
                     <div
-                      className="absolute inset-0 pointer-events-none opacity-[0.09]"
+                      className="absolute inset-0 pointer-events-none opacity-[0.07]"
                       style={{
-                        backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+                        backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+                        mixBlendMode: "multiply",
                       }}
                     />
                     <span
