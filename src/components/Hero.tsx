@@ -83,8 +83,8 @@ export default function Hero() {
 
               {/* ── Frosted Panel ── */}
               <div
-                className="relative bg-cream/[0.80] backdrop-blur-2xl rounded-[1.1rem] sm:rounded-[1.25rem] md:rounded-[1.4rem] border border-foreground/[0.06]"
-                style={{ boxShadow: "0 4px 40px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.02)" }}
+                className="relative bg-white/[0.52] backdrop-blur-2xl rounded-[1.1rem] sm:rounded-[1.25rem] md:rounded-[1.4rem] border border-white/50"
+                style={{ boxShadow: "0 4px 40px rgba(0,0,0,0.07), 0 1px 3px rgba(0,0,0,0.03)" }}
               >
                 {/* Panel grain — materiality */}
                 <div
