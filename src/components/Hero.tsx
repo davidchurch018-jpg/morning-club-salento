@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <>
       {/* ── HERO: Frosted Split Youth Editorial ── */}
-      <section className="relative min-h-screen overflow-hidden">
+      <section className="relative min-h-screen overflow-hidden bg-cream">
         {/* Full-bleed background photo */}
         <Image
           src="/hero-bg.jpg"
@@ -23,82 +23,100 @@ export default function Hero() {
           className="absolute inset-0 z-[1] pointer-events-none"
           style={{
             background: [
-              "linear-gradient(90deg, rgba(0,0,0,0.05) 0%, transparent 35%)",
-              "linear-gradient(180deg, rgba(0,0,0,0.06) 0%, transparent 14%, transparent 86%, rgba(0,0,0,0.05) 100%)",
+              "linear-gradient(90deg, rgba(0,0,0,0.04) 0%, transparent 30%)",
+              "linear-gradient(180deg, rgba(0,0,0,0.05) 0%, transparent 12%, transparent 88%, rgba(0,0,0,0.04) 100%)",
             ].join(", "),
           }}
         />
 
         {/* Grain */}
         <div
-          className="absolute inset-0 z-[2] pointer-events-none opacity-[0.05]"
+          className="absolute inset-0 z-[2] pointer-events-none opacity-[0.04]"
           style={{
             backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
           }}
         />
 
-        {/* Content */}
+        {/* Content layer */}
         <div className="relative z-10 min-h-screen flex items-center">
-          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-24 md:py-16">
+          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-20 md:py-16">
 
-            {/* ── Frosted Panel ── */}
-            <div className="relative w-full md:w-[56%] lg:w-[50%] xl:w-[46%]">
+            {/* ── Panel container (relative anchor for sticker + badges) ── */}
+            <div className="relative w-full md:w-[54%] lg:w-[48%] xl:w-[46%]">
+
+              {/* ── FRESH START sticker — top-left, overlapping panel ── */}
               <div
-                className="relative bg-cream/[0.78] backdrop-blur-2xl rounded-2xl md:rounded-3xl border border-white/40 overflow-hidden"
-                style={{ boxShadow: "0 4px 32px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.03)" }}
+                className="reveal delay-100 absolute -top-5 -left-2 sm:-top-6 sm:-left-3 z-20"
+                style={{ transform: "rotate(-12deg)" }}
+              >
+                <div
+                  className="relative bg-red text-cream px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-sm"
+                  style={{ boxShadow: "2px 3px 0 rgba(0,0,0,0.12)" }}
+                >
+                  <span className="block text-[0.7rem] sm:text-[0.8rem] font-[EloquiaDisplay] tracking-[0.06em] uppercase leading-none">
+                    Fresh Start
+                  </span>
+                  <span className="block text-[0.4rem] sm:text-[0.42rem] font-[SatoshiMedium] tracking-[0.1em] uppercase opacity-70 mt-0.5">
+                    Est. 2025
+                  </span>
+                  {/* Decorative dot */}
+                  <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-red rounded-full border-[2px] border-cream" />
+                </div>
+              </div>
+
+              {/* ── Frosted Panel ── */}
+              <div
+                className="relative bg-cream/[0.80] backdrop-blur-2xl rounded-[1.1rem] sm:rounded-[1.25rem] md:rounded-[1.4rem] border border-foreground/[0.06]"
+                style={{ boxShadow: "0 4px 40px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.02)" }}
               >
                 {/* Panel grain — materiality */}
                 <div
-                  className="absolute inset-0 pointer-events-none opacity-[0.025]"
+                  className="absolute inset-0 rounded-[inherit] pointer-events-none opacity-[0.02]"
                   style={{
                     backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
                   }}
                 />
 
-                <div className="relative px-7 sm:px-9 md:px-10 lg:px-12 py-10 sm:py-12 md:py-14 lg:py-16">
-                  {/* Headline + inline badge */}
-                  <h1 className="reveal delay-100">
-                    <span className="block text-[2.3rem] sm:text-[3.1rem] md:text-[3.5rem] lg:text-[4.2rem] leading-[0.88] tracking-[-0.02em] text-foreground font-[EloquiaDisplay] uppercase">
-                      Morning Club
+                <div className="relative px-7 sm:px-9 md:px-10 lg:px-12 pt-12 sm:pt-14 md:pt-16 pb-10 sm:pb-12 md:pb-14">
+
+                  {/* ── Headline: 3 lines ── */}
+                  <h1 className="reveal delay-200">
+                    <span className="block text-[2.1rem] sm:text-[2.8rem] md:text-[3.3rem] lg:text-[3.9rem] leading-[0.92] tracking-[-0.015em] text-foreground font-[EloquiaDisplay] uppercase">
+                      Morning
                     </span>
-                    <span className="flex items-end gap-2.5 sm:gap-3 mt-0.5 sm:mt-1 flex-wrap">
-                      <span className="text-[2.3rem] sm:text-[3.1rem] md:text-[3.5rem] lg:text-[4.2rem] leading-[0.88] tracking-[-0.02em] text-foreground font-[EloquiaDisplay] uppercase">
-                        Salento
-                      </span>
-                      <span
-                        className="inline-block bg-red text-cream text-[0.48rem] sm:text-[0.54rem] md:text-[0.58rem] tracking-[0.14em] uppercase font-[EloquiaDisplay] px-2 py-[3px] rounded-sm -rotate-2 mb-1.5 sm:mb-2 md:mb-3 whitespace-nowrap"
-                        style={{ boxShadow: "2px 2px 0 rgba(0,0,0,0.08)" }}
-                      >
-                        Coffee &amp; Disco
-                      </span>
+                    <span className="block text-[2.1rem] sm:text-[2.8rem] md:text-[3.3rem] lg:text-[3.9rem] leading-[0.92] tracking-[-0.015em] text-foreground font-[EloquiaDisplay] uppercase">
+                      Club
+                    </span>
+                    <span className="block text-[2.1rem] sm:text-[2.8rem] md:text-[3.3rem] lg:text-[3.9rem] leading-[0.92] tracking-[-0.015em] text-foreground font-[EloquiaDisplay] uppercase">
+                      Salento
                     </span>
                   </h1>
 
-                  {/* Manifesto */}
-                  <p className="reveal delay-200 mt-5 sm:mt-6 text-[0.92rem] sm:text-base md:text-lg text-foreground/60 font-[SatoshiMedium] leading-relaxed">
+                  {/* ── Manifesto ── */}
+                  <p className="reveal delay-300 mt-5 sm:mt-7 text-[0.95rem] sm:text-[1.05rem] md:text-lg text-foreground/55 font-[SatoshiMedium] leading-relaxed">
                     La domenica mattina cambia tono.
                   </p>
 
                   {/* Micro-caption */}
-                  <p className="reveal delay-200 mt-1.5 text-[0.56rem] sm:text-[0.62rem] tracking-[0.22em] uppercase text-red font-[EloquiaDisplay]">
+                  <p className="reveal delay-300 mt-1 text-[0.55rem] sm:text-[0.6rem] tracking-[0.2em] uppercase text-foreground/35 font-[SatoshiMedium]">
                     Espresso · Vinyl · People
                   </p>
 
-                  {/* Date + Location */}
-                  <div className="reveal delay-300 mt-7 sm:mt-9">
-                    <p className="text-[0.85rem] sm:text-sm md:text-[0.95rem] font-[EloquiaDisplay] text-foreground leading-snug">
+                  {/* ── Date + Location ── */}
+                  <div className="reveal delay-400 mt-7 sm:mt-9">
+                    <p className="text-[0.88rem] sm:text-[0.95rem] md:text-base font-[EloquiaDisplay] text-foreground leading-snug">
                       Domenica 1 Marzo — 10:00
                     </p>
-                    <p className="text-[0.68rem] sm:text-xs text-blue-gray font-[SatoshiMedium] mt-1">
+                    <p className="text-[0.7rem] sm:text-xs text-blue-gray font-[SatoshiMedium] mt-1">
                       Martinucci, Lecce
                     </p>
                   </div>
 
-                  {/* CTA */}
-                  <div className="reveal delay-400 mt-7 sm:mt-8">
+                  {/* ── CTA ── */}
+                  <div className="reveal delay-500 mt-7 sm:mt-9">
                     <a
                       href="#iscriviti"
-                      className="inline-flex items-center bg-red hover:bg-red-dark text-cream px-7 py-3.5 sm:px-8 sm:py-4 text-[0.72rem] sm:text-[0.78rem] tracking-[0.18em] uppercase font-[EloquiaDisplay] rounded-lg transition-all duration-200 active:scale-[0.97] min-h-[48px]"
+                      className="inline-flex items-center bg-red hover:bg-red-dark text-cream px-7 py-3.5 sm:px-8 sm:py-4 text-[0.7rem] sm:text-[0.76rem] tracking-[0.16em] uppercase font-[EloquiaDisplay] rounded-lg transition-all duration-200 active:scale-[0.97] min-h-[48px]"
                       style={{ boxShadow: "3px 3px 0 rgba(0,0,0,0.08)" }}
                     >
                       Entra in lista
@@ -107,28 +125,32 @@ export default function Hero() {
                 </div>
               </div>
 
-              {/* ── Floating date modules — panel edge ── */}
-              <div className="reveal delay-500 absolute -bottom-5 right-4 sm:right-6 md:-right-4 lg:-right-6 flex items-center gap-2.5">
-                {/* 01/MAR badge */}
+              {/* ── Floating date badges — bottom-right, overlapping panel edge ── */}
+              <div className="reveal delay-600 absolute -bottom-6 sm:-bottom-7 right-6 sm:right-8 md:-right-3 lg:-right-5 flex items-stretch gap-2">
+                {/* 01 / MAR */}
                 <div
-                  className="bg-red text-cream rounded-xl px-3 py-2 sm:px-3.5 sm:py-2.5 text-center"
-                  style={{ boxShadow: "3px 3px 0 rgba(0,0,0,0.1)" }}
+                  className="bg-red text-cream rounded-2xl px-4 py-3 sm:px-5 sm:py-3.5 text-center flex flex-col items-center justify-center min-w-[3.2rem] sm:min-w-[3.6rem]"
+                  style={{ boxShadow: "3px 4px 0 rgba(0,0,0,0.10)" }}
                 >
-                  <span className="block text-lg sm:text-xl font-[EloquiaDisplay] leading-none">01</span>
-                  <span className="block text-[0.48rem] sm:text-[0.52rem] tracking-[0.15em] uppercase font-[EloquiaDisplay] mt-0.5">MAR</span>
+                  <span className="block text-[1.3rem] sm:text-[1.5rem] font-[EloquiaDisplay] leading-none" style={{ fontVariantNumeric: "tabular-nums" }}>
+                    01
+                  </span>
+                  <span className="block text-[0.5rem] sm:text-[0.55rem] tracking-[0.12em] uppercase font-[EloquiaDisplay] mt-0.5 opacity-90">
+                    MAR
+                  </span>
                 </div>
-                {/* 10:00 pill */}
+                {/* 10:00 */}
                 <div
-                  className="bg-foreground/90 backdrop-blur-lg text-cream rounded-full px-3.5 py-2 sm:px-4 sm:py-2.5"
-                  style={{ boxShadow: "3px 3px 0 rgba(0,0,0,0.08)" }}
+                  className="bg-foreground/90 backdrop-blur-md text-cream rounded-2xl px-4 py-3 sm:px-5 sm:py-3.5 flex items-center justify-center"
+                  style={{ boxShadow: "3px 4px 0 rgba(0,0,0,0.08)" }}
                 >
-                  <span className="text-xs sm:text-sm font-[EloquiaDisplay] tracking-[0.05em]" style={{ fontVariantNumeric: "tabular-nums" }}>
+                  <span className="text-[1rem] sm:text-[1.15rem] font-[EloquiaDisplay] tracking-[0.04em]" style={{ fontVariantNumeric: "tabular-nums" }}>
                     10:00
                   </span>
                 </div>
               </div>
-            </div>
 
+            </div>
           </div>
         </div>
       </section>
