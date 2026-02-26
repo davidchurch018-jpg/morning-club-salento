@@ -5,9 +5,9 @@ import Image from "next/image";
 export default function Hero() {
   return (
     <>
-      {/* ── HERO: full-bleed image + grid-aligned date overlay ── */}
+      {/* ── HERO: Frosted Split Youth Editorial ── */}
       <section className="relative min-h-screen overflow-hidden">
-        {/* Background */}
+        {/* Full-bleed background photo */}
         <Image
           src="/hero-bg.jpg"
           alt=""
@@ -15,129 +15,146 @@ export default function Hero() {
           priority
           className="object-cover"
           sizes="100vw"
-          quality={80}
+          quality={85}
         />
 
-        {/* Selective gradient masks — protect text corners, preserve photo center */}
+        {/* Subtle gradient — depth without killing photo */}
         <div
           className="absolute inset-0 z-[1] pointer-events-none"
           style={{
             background: [
-              "radial-gradient(ellipse 60% 50% at 0% 0%, rgba(0,0,0,0.50) 0%, transparent 70%)",
-              "radial-gradient(ellipse 50% 45% at 100% 0%, rgba(0,0,0,0.40) 0%, transparent 65%)",
-              "radial-gradient(ellipse 55% 50% at 0% 100%, rgba(0,0,0,0.40) 0%, transparent 65%)",
-              "radial-gradient(ellipse 50% 50% at 100% 100%, rgba(0,0,0,0.45) 0%, transparent 65%)",
+              "linear-gradient(90deg, rgba(0,0,0,0.05) 0%, transparent 35%)",
+              "linear-gradient(180deg, rgba(0,0,0,0.06) 0%, transparent 14%, transparent 86%, rgba(0,0,0,0.05) 100%)",
             ].join(", "),
           }}
         />
-        {/* Soft vertical vignette */}
-        <div
-          className="absolute inset-0 z-[1] pointer-events-none"
-          style={{
-            background: "linear-gradient(180deg, rgba(0,0,0,0.20) 0%, transparent 24%, transparent 72%, rgba(0,0,0,0.28) 100%)",
-          }}
-        />
 
-        {/* Subtle grain overlay */}
+        {/* Grain */}
         <div
-          className="absolute inset-0 z-[2] pointer-events-none opacity-[0.07]"
+          className="absolute inset-0 z-[2] pointer-events-none opacity-[0.05]"
           style={{
             backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
           }}
         />
 
-        {/* Grid-aligned date composition */}
-        <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-12 md:px-16 h-screen flex flex-col justify-between pt-28 pb-20 sm:py-20">
+        {/* Content */}
+        <div className="relative z-10 min-h-screen flex items-center">
+          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-24 md:py-16">
 
-          {/* Curatorial label — editorial identity */}
-          <span className="label-curatorial reveal delay-500 absolute top-[7rem] sm:top-24 right-6 sm:right-12 md:right-16">
-            Sunday Drop
-          </span>
-
-          {/* Top row: DOM left, 10:00 right */}
-          <div className="flex items-start justify-between">
-            <span
-              className="reveal text-[3.4rem] sm:text-[5.5rem] md:text-[6.5rem] lg:text-[8rem] leading-[0.8] tracking-[0.04em] text-cream font-[EloquiaDisplay]"
-              style={{
-                textShadow: "0 2px 16px rgba(0,0,0,0.5), 0 1px 3px rgba(0,0,0,0.3)",
-              }}
-            >
-              DOM
-            </span>
-            <div
-              className="reveal delay-200 bg-foreground/90 backdrop-blur-[2px] border border-cream/15 px-4 py-1.5 sm:px-6 sm:py-2.5 md:px-8 md:py-3 sm:border-0"
-              style={{ boxShadow: "3px 3px 0 rgba(0,0,0,0.15)" }}
-            >
-              <span
-                className="text-[1.8rem] sm:text-[2.5rem] md:text-[3.5rem] lg:text-[4.5rem] leading-none tracking-[0.04em] text-cream font-[EloquiaDisplay]"
-                style={{ fontVariantNumeric: "tabular-nums" }}
-              >
-                10:00
-              </span>
-            </div>
-          </div>
-
-          {/* Bottom row: 01 left, MAR + 2026 stacked right */}
-          <div className="flex items-end justify-between pb-16 sm:pb-0">
-            <span
-              className="reveal delay-100 text-[4.8rem] sm:text-[9rem] md:text-[11rem] lg:text-[13rem] leading-[0.75] tracking-[0.04em] text-cream font-[EloquiaDisplay]"
-              style={{ fontVariantNumeric: "tabular-nums", textShadow: "0 2px 16px rgba(0,0,0,0.5), 0 1px 3px rgba(0,0,0,0.3)" }}
-            >
-              01
-            </span>
-            <div className="flex flex-col items-end -ml-6 sm:ml-0">
+            {/* ── Frosted Panel ── */}
+            <div className="relative w-full md:w-[56%] lg:w-[50%] xl:w-[46%]">
               <div
-                className="reveal delay-300 bg-red-dark/95 backdrop-blur-[2px] border border-cream/15 px-4 py-1.5 sm:px-6 sm:py-2.5 md:px-8 md:py-3 sm:border-0"
-                style={{ boxShadow: "3px 3px 0 rgba(0,0,0,0.15)" }}
+                className="relative bg-cream/[0.78] backdrop-blur-2xl rounded-2xl md:rounded-3xl border border-white/40 overflow-hidden"
+                style={{ boxShadow: "0 4px 32px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.03)" }}
               >
-                <span className="text-[2.5rem] sm:text-[3.5rem] md:text-[5rem] lg:text-[6rem] leading-none tracking-[0.04em] text-cream font-[EloquiaDisplay]">
-                  MAR
-                </span>
-              </div>
-              <span className="reveal delay-400 text-[0.8rem] sm:text-[0.8rem] md:text-[0.9rem] tracking-[0.15em] uppercase text-cream/85 font-[EloquiaDisplay] mt-1.5 mr-0.5 sm:mr-1"
-                style={{ textShadow: "0 1px 4px rgba(0,0,0,0.35)" }}
-              >
-                / 2026
-              </span>
-            </div>
-          </div>
+                {/* Panel grain — materiality */}
+                <div
+                  className="absolute inset-0 pointer-events-none opacity-[0.025]"
+                  style={{
+                    backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+                  }}
+                />
 
-          {/* Micro-caption — editorial context line */}
-          <div className="absolute bottom-8 sm:bottom-8 left-6 sm:left-12 md:left-16 z-10 reveal-left delay-600">
-            <p className="text-[0.6rem] sm:text-[0.65rem] tracking-[0.22em] uppercase text-cream/60 font-[EloquiaDisplay] mb-1.5">
-              Espresso · Vinyl · People
-            </p>
-            <p className="text-[0.9rem] sm:text-[0.9rem] tracking-[0.16em] uppercase text-cream font-[SatoshiMedium]"
-              style={{ textShadow: "0 1px 10px rgba(0,0,0,0.55), 0 0px 3px rgba(0,0,0,0.35)" }}
-            >
-              Caffè, vinili, gente giusta.
-            </p>
+                <div className="relative px-7 sm:px-9 md:px-10 lg:px-12 py-10 sm:py-12 md:py-14 lg:py-16">
+                  {/* Headline + inline badge */}
+                  <h1 className="reveal delay-100">
+                    <span className="block text-[2.3rem] sm:text-[3.1rem] md:text-[3.5rem] lg:text-[4.2rem] leading-[0.88] tracking-[-0.02em] text-foreground font-[EloquiaDisplay] uppercase">
+                      Morning Club
+                    </span>
+                    <span className="flex items-end gap-2.5 sm:gap-3 mt-0.5 sm:mt-1 flex-wrap">
+                      <span className="text-[2.3rem] sm:text-[3.1rem] md:text-[3.5rem] lg:text-[4.2rem] leading-[0.88] tracking-[-0.02em] text-foreground font-[EloquiaDisplay] uppercase">
+                        Salento
+                      </span>
+                      <span
+                        className="inline-block bg-red text-cream text-[0.48rem] sm:text-[0.54rem] md:text-[0.58rem] tracking-[0.14em] uppercase font-[EloquiaDisplay] px-2 py-[3px] rounded-sm -rotate-2 mb-1.5 sm:mb-2 md:mb-3 whitespace-nowrap"
+                        style={{ boxShadow: "2px 2px 0 rgba(0,0,0,0.08)" }}
+                      >
+                        Coffee &amp; Disco
+                      </span>
+                    </span>
+                  </h1>
+
+                  {/* Manifesto */}
+                  <p className="reveal delay-200 mt-5 sm:mt-6 text-[0.92rem] sm:text-base md:text-lg text-foreground/60 font-[SatoshiMedium] leading-relaxed">
+                    La domenica mattina cambia tono.
+                  </p>
+
+                  {/* Micro-caption */}
+                  <p className="reveal delay-200 mt-1.5 text-[0.56rem] sm:text-[0.62rem] tracking-[0.22em] uppercase text-red font-[EloquiaDisplay]">
+                    Espresso · Vinyl · People
+                  </p>
+
+                  {/* Date + Location */}
+                  <div className="reveal delay-300 mt-7 sm:mt-9">
+                    <p className="text-[0.85rem] sm:text-sm md:text-[0.95rem] font-[EloquiaDisplay] text-foreground leading-snug">
+                      Domenica 1 Marzo — 10:00
+                    </p>
+                    <p className="text-[0.68rem] sm:text-xs text-blue-gray font-[SatoshiMedium] mt-1">
+                      Martinucci, Lecce
+                    </p>
+                  </div>
+
+                  {/* CTA */}
+                  <div className="reveal delay-400 mt-7 sm:mt-8">
+                    <a
+                      href="#iscriviti"
+                      className="inline-flex items-center bg-red hover:bg-red-dark text-cream px-7 py-3.5 sm:px-8 sm:py-4 text-[0.72rem] sm:text-[0.78rem] tracking-[0.18em] uppercase font-[EloquiaDisplay] rounded-lg transition-all duration-200 active:scale-[0.97] min-h-[48px]"
+                      style={{ boxShadow: "3px 3px 0 rgba(0,0,0,0.08)" }}
+                    >
+                      Entra in lista
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* ── Floating date modules — panel edge ── */}
+              <div className="reveal delay-500 absolute -bottom-5 right-4 sm:right-6 md:-right-4 lg:-right-6 flex items-center gap-2.5">
+                {/* 01/MAR badge */}
+                <div
+                  className="bg-red text-cream rounded-xl px-3 py-2 sm:px-3.5 sm:py-2.5 text-center"
+                  style={{ boxShadow: "3px 3px 0 rgba(0,0,0,0.1)" }}
+                >
+                  <span className="block text-lg sm:text-xl font-[EloquiaDisplay] leading-none">01</span>
+                  <span className="block text-[0.48rem] sm:text-[0.52rem] tracking-[0.15em] uppercase font-[EloquiaDisplay] mt-0.5">MAR</span>
+                </div>
+                {/* 10:00 pill */}
+                <div
+                  className="bg-foreground/90 backdrop-blur-lg text-cream rounded-full px-3.5 py-2 sm:px-4 sm:py-2.5"
+                  style={{ boxShadow: "3px 3px 0 rgba(0,0,0,0.08)" }}
+                >
+                  <span className="text-xs sm:text-sm font-[EloquiaDisplay] tracking-[0.05em]" style={{ fontVariantNumeric: "tabular-nums" }}>
+                    10:00
+                  </span>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* ── BELOW HERO: manifesto editoriale ── */}
+      {/* ── BELOW HERO: manifesto ── */}
       <section className="bg-cream py-14 sm:py-16 md:py-20">
         <div className="max-w-5xl mx-auto px-6 sm:px-12 md:px-16">
-          {/* Title */}
-          <h1 className="text-4xl sm:text-7xl md:text-8xl lg:text-9xl text-red leading-[0.85] tracking-tight font-[EloquiaDisplay] uppercase">
+          {/* Brand */}
+          <h2 className="text-4xl sm:text-7xl md:text-8xl lg:text-9xl text-red leading-[0.85] tracking-tight font-[EloquiaDisplay] uppercase">
             Morning Club
-          </h1>
-          <h2 className="text-3xl sm:text-6xl md:text-7xl lg:text-8xl text-foreground leading-[0.85] tracking-tight mt-1 sm:mt-2 font-[EloquiaDisplay]">
-            Salento.
           </h2>
+          <p className="text-3xl sm:text-6xl md:text-7xl lg:text-8xl text-foreground leading-[0.85] tracking-tight mt-1 sm:mt-2 font-[EloquiaDisplay]">
+            Salento.
+          </p>
 
-          {/* Manifesto — curatorial tone */}
+          {/* Manifesto — different angle from hero */}
           <p className="mt-8 sm:mt-10 text-xl sm:text-2xl md:text-3xl font-[SatoshiMedium] text-foreground/80 leading-snug max-w-2xl">
-            La domenica mattina <span className="marker-swipe">cambia tono.</span>
+            Non solo un evento. <span className="marker-swipe">Un appuntamento.</span>
           </p>
 
-          {/* Micro-caption — editorial register */}
+          {/* Micro-caption */}
           <p className="mt-4 sm:mt-5 text-[0.7rem] sm:text-[0.75rem] tracking-[0.2em] uppercase text-blue-gray font-[EloquiaDisplay]">
-            Espresso, selezione musicale, persone giuste. Nessun rumore inutile.
+            Caffè, selezione musicale, persone giuste. Ogni domenica alle 10, nessun rumore inutile.
           </p>
 
-          {/* Tagline + Location */}
+          {/* Badge + Location */}
           <div className="mt-8 sm:mt-10 flex items-center gap-4 flex-wrap">
             <span className="stamp-badge">Coffee &amp; Disco</span>
             <span className="text-[0.65rem] tracking-[0.2em] uppercase font-[SatoshiMedium] text-blue-gray">
@@ -150,22 +167,15 @@ export default function Hero() {
             Ogni domenica alle 10 · Ingresso su invito
           </p>
 
-          {/* CTA — editorial outline */}
+          {/* CTA — secondary outline */}
           <div className="mt-8 sm:mt-10">
             <a
               href="#iscriviti"
               className="inline-flex items-center gap-3 border-2 border-red text-red hover:bg-red hover:text-cream px-8 py-4 text-sm sm:text-base tracking-[0.2em] uppercase font-[EloquiaDisplay] transition-all duration-200 active:translate-y-[1px] active:scale-[0.98]"
               style={{ boxShadow: "3px 3px 0 rgba(0,0,0,0.10)" }}
             >
-              Entra in lista
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2.5}
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
+              Resta nel giro
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M19 14l-7 7m0 0l-7-7m7 7V3" />
               </svg>
             </a>
@@ -173,7 +183,7 @@ export default function Hero() {
         </div>
       </section>
 
-      {/* ── RITUAL: 3 chips + next event — hidden on mobile ── */}
+      {/* ── RITUAL: 3 chips — desktop only ── */}
       <section className="bg-cream border-t border-warm-gray/30 hidden sm:block">
         <div className="max-w-5xl mx-auto px-6 sm:px-12 md:px-16 py-8 sm:py-10">
           <div className="grid grid-cols-3 gap-3 sm:gap-6">
