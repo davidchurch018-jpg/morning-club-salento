@@ -44,23 +44,40 @@ export default function Hero() {
             {/* ── Panel container (relative anchor for sticker + badges) ── */}
             <div className="relative w-full md:w-[54%] lg:w-[48%] xl:w-[46%]">
 
-              {/* ── FRESH START sticker — top-left, overlapping panel ── */}
+              {/* ── FRESH START sticker — tag shape, top-left, overlapping panel ── */}
               <div
-                className="reveal delay-100 absolute -top-5 -left-2 sm:-top-6 sm:-left-3 z-20"
-                style={{ transform: "rotate(-12deg)" }}
+                className="reveal delay-100 absolute -top-5 -left-1 sm:-top-6 sm:-left-2 z-20"
+                style={{ transform: "rotate(-12deg)", filter: "drop-shadow(2px 3px 3px rgba(0,0,0,0.18))" }}
               >
-                <div
-                  className="relative bg-red text-cream px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-sm"
-                  style={{ boxShadow: "2px 3px 0 rgba(0,0,0,0.12)" }}
-                >
-                  <span className="block text-[0.7rem] sm:text-[0.8rem] font-[EloquiaDisplay] tracking-[0.06em] uppercase leading-none">
-                    Fresh Start
-                  </span>
-                  <span className="block text-[0.4rem] sm:text-[0.42rem] font-[SatoshiMedium] tracking-[0.1em] uppercase opacity-70 mt-0.5">
-                    Est. 2025
-                  </span>
-                  {/* Decorative dot */}
-                  <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-red rounded-full border-[2px] border-cream" />
+                <div className="relative">
+                  {/* Tag shape via SVG */}
+                  <svg
+                    viewBox="0 0 152 52"
+                    className="w-[108px] sm:w-[125px] md:w-[135px] h-auto"
+                    aria-hidden="true"
+                  >
+                    {/* Tag body — pointed left, rounded right */}
+                    <path
+                      d="M13,1 H146 C149.3,1 151,3.5 151,6 V46 C151,48.5 149.3,51 146,51 H13 C11,51 9.2,50 8.2,48.2 L1,26 L8.2,3.8 C9.2,2 11,1 13,1 Z"
+                      fill="#7A2820"
+                    />
+                    {/* Hole punch */}
+                    <circle cx="126" cy="13" r="4.2" fill="#5E1F16" />
+                    <circle cx="126" cy="13" r="2.8" fill="#7A2820" opacity="0.4" />
+                    {/* Cherry / berry decoration */}
+                    <circle cx="138" cy="4" r="5.5" fill="#7A2820" />
+                    <circle cx="134" cy="6" r="4" fill="#8B2D22" />
+                    <path d="M136,4 C135.5,0 137,-2 138,-3.5" stroke="#5A1912" strokeWidth="1.4" fill="none" strokeLinecap="round" />
+                  </svg>
+                  {/* Text overlay */}
+                  <div className="absolute inset-0 flex flex-col justify-center pl-[18px] sm:pl-[22px] pr-3">
+                    <span className="text-[0.62rem] sm:text-[0.72rem] md:text-[0.78rem] font-[EloquiaDisplay] text-cream tracking-[0.04em] uppercase leading-none">
+                      Fresh Start
+                    </span>
+                    <span className="text-[0.3rem] sm:text-[0.34rem] font-[SatoshiMedium] text-cream/50 tracking-[0.1em] uppercase mt-[3px]">
+                      Est. 3034
+                    </span>
+                  </div>
                 </div>
               </div>
 
@@ -125,28 +142,36 @@ export default function Hero() {
                 </div>
               </div>
 
-              {/* ── Floating date badges — bottom-right, overlapping panel edge ── */}
-              <div className="reveal delay-600 absolute -bottom-6 sm:-bottom-7 right-6 sm:right-8 md:-right-3 lg:-right-5 flex items-stretch gap-2">
-                {/* 01 / MAR */}
-                <div
-                  className="bg-red text-cream rounded-2xl px-4 py-3 sm:px-5 sm:py-3.5 text-center flex flex-col items-center justify-center min-w-[3.2rem] sm:min-w-[3.6rem]"
-                  style={{ boxShadow: "3px 4px 0 rgba(0,0,0,0.10)" }}
-                >
-                  <span className="block text-[1.3rem] sm:text-[1.5rem] font-[EloquiaDisplay] leading-none" style={{ fontVariantNumeric: "tabular-nums" }}>
-                    01
-                  </span>
-                  <span className="block text-[0.5rem] sm:text-[0.55rem] tracking-[0.12em] uppercase font-[EloquiaDisplay] mt-0.5 opacity-90">
-                    MAR
-                  </span>
-                </div>
-                {/* 10:00 */}
-                <div
-                  className="bg-foreground/90 backdrop-blur-md text-cream rounded-2xl px-4 py-3 sm:px-5 sm:py-3.5 flex items-center justify-center"
-                  style={{ boxShadow: "3px 4px 0 rgba(0,0,0,0.08)" }}
-                >
-                  <span className="text-[1rem] sm:text-[1.15rem] font-[EloquiaDisplay] tracking-[0.04em]" style={{ fontVariantNumeric: "tabular-nums" }}>
-                    10:00
-                  </span>
+              {/* ── Date badge — unified 01/MAR + 10:00, bottom-right panel overlap ── */}
+              <div
+                className="reveal delay-600 absolute -bottom-5 sm:-bottom-6 right-6 sm:right-8 md:-right-2 lg:-right-4"
+                style={{ filter: "drop-shadow(2px 3px 6px rgba(0,0,0,0.13))" }}
+              >
+                <div className="flex overflow-hidden rounded-2xl">
+                  {/* 01 / MAR — red */}
+                  <div className="bg-red text-cream px-4 py-2.5 sm:px-5 sm:py-3 text-center flex flex-col items-center justify-center min-w-[3rem] sm:min-w-[3.4rem]">
+                    <span
+                      className="block text-[1.15rem] sm:text-[1.3rem] font-[EloquiaDisplay] leading-none"
+                      style={{ fontVariantNumeric: "tabular-nums" }}
+                    >
+                      01
+                    </span>
+                    <span className="block text-[0.52rem] sm:text-[0.58rem] tracking-[0.06em] uppercase font-[EloquiaDisplay] mt-0.5 opacity-90">
+                      MAR
+                    </span>
+                  </div>
+                  {/* 10:00 — warm gray */}
+                  <div className="bg-[#E2DED6] text-foreground px-4 py-2.5 sm:px-5 sm:py-3 flex flex-col items-center justify-center">
+                    <span
+                      className="block text-[1.15rem] sm:text-[1.3rem] font-[EloquiaDisplay] leading-none"
+                      style={{ fontVariantNumeric: "tabular-nums" }}
+                    >
+                      10:00
+                    </span>
+                    <span className="block text-[0.28rem] sm:text-[0.32rem] font-[SatoshiMedium] tracking-[0.06em] text-foreground/35 mt-0.5">
+                      mattina
+                    </span>
+                  </div>
                 </div>
               </div>
 
