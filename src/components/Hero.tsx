@@ -152,10 +152,10 @@ export default function Hero() {
                   <div
                     className="relative text-foreground px-4 py-2.5 sm:px-5 sm:py-3 flex flex-col items-center justify-center"
                     style={{
-                      background: "rgba(245,240,232,0.55)",
+                      background: "rgba(255,255,255,0.08)",
                       backdropFilter: "blur(44px) saturate(1.08)",
                       WebkitBackdropFilter: "blur(44px) saturate(1.08)",
-                      borderLeft: "1px solid rgba(255,255,255,0.12)",
+                      border: "1px solid rgba(255,255,255,0.12)",
                     }}
                   >
                     {/* Grain on glass badge */}
