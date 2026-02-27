@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Hero() {
   const frostedGlassStyle = {
-    background: "rgba(255,255,255,0.34)",
+    background: "rgba(255,255,255,0.42)",
     backdropFilter: "blur(44px) saturate(1.08)",
     WebkitBackdropFilter: "blur(44px) saturate(1.08)",
     border: "1px solid rgba(255,255,255,0.12)",
