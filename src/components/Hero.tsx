@@ -66,7 +66,7 @@ export default function Hero() {
               <div
                 className="relative rounded-[1.1rem] sm:rounded-[1.25rem] md:rounded-[1.4rem]"
                 style={{
-                  background: "rgba(255,255,255,0.08)",
+                  background: "rgba(255,255,255,0.28)",
                   backdropFilter: "blur(44px) saturate(1.08)",
                   WebkitBackdropFilter: "blur(44px) saturate(1.08)",
                   border: "1px solid rgba(255,255,255,0.12)",
@@ -152,7 +152,7 @@ export default function Hero() {
                   <div
                     className="relative text-foreground px-4 py-2.5 sm:px-5 sm:py-3 flex flex-col items-center justify-center"
                     style={{
-                      background: "rgba(245,240,232,0.4)",
+                      background: "rgba(255,255,255,0.28)",
                       backdropFilter: "blur(44px) saturate(1.08)",
                       WebkitBackdropFilter: "blur(44px) saturate(1.08)",
                       border: "1px solid rgba(255,255,255,0.12)",
