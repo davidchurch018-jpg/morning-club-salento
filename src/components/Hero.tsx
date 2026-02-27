@@ -5,9 +5,9 @@ import Image from "next/image";
 
 export default function Hero() {
   const frostedGlassStyle: CSSProperties = {
-    background: "rgba(255,255,255,0.42)",
-    backdropFilter: "blur(44px) saturate(1.08)",
-    WebkitBackdropFilter: "blur(44px) saturate(1.08)",
+    background: "rgba(255,255,255,0.52)",
+    backdropFilter: "blur(44px) saturate(1.12)",
+    WebkitBackdropFilter: "blur(44px) saturate(1.12)",
     border: "1px solid rgba(255,255,255,0.12)",
     boxShadow: "0 2px 20px rgba(0,0,0,0.03), 0 0.5px 1px rgba(0,0,0,0.015)",
   };
@@ -83,7 +83,7 @@ export default function Hero() {
               >
                 {/* Panel grain — satin materiality */}
                 <div
-                  className="absolute inset-0 rounded-[inherit] pointer-events-none opacity-[0.07]"
+                  className="absolute inset-0 rounded-[inherit] pointer-events-none opacity-[0.12]"
                   style={frostedGrainStyle}
                 />
 
@@ -160,7 +160,7 @@ export default function Hero() {
                   >
                     {/* Grain on glass badge */}
                     <div
-                      className="absolute inset-0 pointer-events-none opacity-[0.07]"
+                      className="absolute inset-0 pointer-events-none opacity-[0.12]"
                       style={frostedGrainStyle}
                     />
                     <span
