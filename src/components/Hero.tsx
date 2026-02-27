@@ -3,6 +3,19 @@
 import Image from "next/image";
 
 export default function Hero() {
+  const frostedGlassStyle = {
+    background: "rgba(255,255,255,0.34)",
+    backdropFilter: "blur(44px) saturate(1.08)",
+    WebkitBackdropFilter: "blur(44px) saturate(1.08)",
+    border: "1px solid rgba(255,255,255,0.12)",
+    boxShadow: "0 2px 20px rgba(0,0,0,0.03), 0 0.5px 1px rgba(0,0,0,0.015)",
+  };
+  const frostedGrainStyle = {
+    backgroundImage:
+      "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+    mixBlendMode: "multiply",
+  };
+
   return (
     <>
       {/* ── HERO: Frosted Split Youth Editorial ── */}
@@ -65,21 +78,12 @@ export default function Hero() {
               {/* ── Frosted Acrylic Panel ── */}
               <div
                 className="relative rounded-[1.1rem] sm:rounded-[1.25rem] md:rounded-[1.4rem]"
-                style={{
-                  background: "rgba(255,255,255,0.28)",
-                  backdropFilter: "blur(44px) saturate(1.08)",
-                  WebkitBackdropFilter: "blur(44px) saturate(1.08)",
-                  border: "1px solid rgba(255,255,255,0.12)",
-                  boxShadow: "0 2px 20px rgba(0,0,0,0.03), 0 0.5px 1px rgba(0,0,0,0.015)",
-                }}
+                style={frostedGlassStyle}
               >
                 {/* Panel grain — satin materiality */}
                 <div
                   className="absolute inset-0 rounded-[inherit] pointer-events-none opacity-[0.07]"
-                  style={{
-                    backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
-                    mixBlendMode: "multiply",
-                  }}
+                  style={frostedGrainStyle}
                 />
 
                 <div className="relative px-7 sm:px-9 md:px-10 lg:px-12 pt-12 sm:pt-14 md:pt-16 pb-10 sm:pb-12 md:pb-14">
@@ -151,21 +155,12 @@ export default function Hero() {
                   {/* 10:00 — frosted acrylic */}
                   <div
                     className="relative text-foreground px-4 py-2.5 sm:px-5 sm:py-3 flex flex-col items-center justify-center"
-                    style={{
-                      background: "rgba(255,255,255,0.28)",
-                      backdropFilter: "blur(44px) saturate(1.08)",
-                      WebkitBackdropFilter: "blur(44px) saturate(1.08)",
-                      border: "1px solid rgba(255,255,255,0.12)",
-                      boxShadow: "0 2px 20px rgba(0,0,0,0.03), 0 0.5px 1px rgba(0,0,0,0.015)",
-                    }}
+                    style={frostedGlassStyle}
                   >
                     {/* Grain on glass badge */}
                     <div
                       className="absolute inset-0 pointer-events-none opacity-[0.07]"
-                      style={{
-                        backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
-                        mixBlendMode: "multiply",
-                      }}
+                      style={frostedGrainStyle}
                     />
                     <span
                       className="block text-[1.15rem] sm:text-[1.3rem] font-[EloquiaDisplay] leading-none"
