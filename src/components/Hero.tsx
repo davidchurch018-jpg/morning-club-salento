@@ -1,16 +1,17 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import Image from "next/image";
 
 export default function Hero() {
-  const frostedGlassStyle = {
+  const frostedGlassStyle: CSSProperties = {
     background: "rgba(255,255,255,0.42)",
     backdropFilter: "blur(44px) saturate(1.08)",
     WebkitBackdropFilter: "blur(44px) saturate(1.08)",
     border: "1px solid rgba(255,255,255,0.12)",
     boxShadow: "0 2px 20px rgba(0,0,0,0.03), 0 0.5px 1px rgba(0,0,0,0.015)",
   };
-  const frostedGrainStyle = {
+  const frostedGrainStyle: CSSProperties = {
     backgroundImage:
       "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
     mixBlendMode: "multiply",
