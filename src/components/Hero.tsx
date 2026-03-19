@@ -1,55 +1,27 @@
 "use client";
 
-import type { CSSProperties } from "react";
 import Image from "next/image";
 
 export default function Hero() {
-  const panelGlassStyle: CSSProperties = {
-    background: "rgba(255,255,255,0.42)",
-    backdropFilter: "blur(44px) saturate(1.08)",
-    WebkitBackdropFilter: "blur(44px) saturate(1.08)",
-    border: "1px solid rgba(255,255,255,0.12)",
-    boxShadow: "0 2px 20px rgba(0,0,0,0.03), 0 0.5px 1px rgba(0,0,0,0.015)",
-  };
-  const badgeGlassStyle: CSSProperties = {
-    background: "rgba(255,255,255,0.52)",
-    backdropFilter: "blur(44px) saturate(1.12)",
-    WebkitBackdropFilter: "blur(44px) saturate(1.12)",
-    border: "1px solid rgba(255,255,255,0.12)",
-    boxShadow: "0 2px 20px rgba(0,0,0,0.03), 0 0.5px 1px rgba(0,0,0,0.015)",
-  };
-  const frostedGrainStyle: CSSProperties = {
-    backgroundImage:
-      "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
-    mixBlendMode: "multiply",
-  };
-
   return (
     <>
       {/* ── HERO: Frosted Split Youth Editorial ── */}
       <section className="relative min-h-screen overflow-hidden bg-cream">
-        {/* Full-bleed background photo */}
-        <Image
-          src="/hero-bg.jpg"
-          alt=""
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
-          quality={85}
+        {/* Full-bleed background video */}
+        <video
+          src="/hero_video.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-[0.35] grayscale-[0.25]"
         />
 
-        {/* ── CREAM BACKGROUND SECTION — left ~38% of hero ── */}
-        <div className="absolute inset-y-0 left-0 w-full md:w-[40%] lg:w-[38%] bg-cream z-[1]" />
-
-        {/* Subtle gradient on photo side */}
+        {/* ── CREAM BACKGROUND — soft fade instead of hard cut ── */}
         <div
-          className="absolute inset-0 z-[2] pointer-events-none"
+          className="absolute inset-0 z-[1] pointer-events-none"
           style={{
-            background: [
-              "linear-gradient(90deg, rgba(0,0,0,0.04) 0%, transparent 30%)",
-              "linear-gradient(180deg, rgba(0,0,0,0.05) 0%, transparent 12%, transparent 88%, rgba(0,0,0,0.04) 100%)",
-            ].join(", "),
+            background: "linear-gradient(90deg, var(--color-cream) 0%, var(--color-cream) 30%, rgba(245,240,232,0.75) 44%, rgba(245,240,232,0.35) 60%, rgba(245,240,232,0.12) 80%, transparent 100%)",
           }}
         />
 
@@ -61,12 +33,19 @@ export default function Hero() {
           }}
         />
 
+        {/* ── Oversized Hero Text (Background, right side only) ── */}
+        <div className="absolute top-1/2 -translate-y-1/2 right-0 z-[4] pointer-events-none select-none hidden md:block">
+           <p className="text-[12vw] leading-[0.82] font-[EloquiaDisplay] text-foreground/[0.08] tracking-tight text-right pr-8" aria-hidden="true">
+             MORNING<br />CLUB<br />SALENTO
+           </p>
+        </div>
+
         {/* Content layer */}
         <div className="relative z-10 min-h-screen flex items-center">
           <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-20 md:py-16">
 
             {/* ── Panel container (relative anchor for sticker + badges) ── */}
-            <div className="relative w-full md:w-[54%] lg:w-[48%] xl:w-[46%] overflow-visible">
+            <div className="relative w-full md:w-[62%] lg:w-[56%] xl:w-[52%] overflow-visible">
 
               {/* ── FRESH START sticker — top-left corner of panel, overlapping edge ── */}
               <div
@@ -83,103 +62,78 @@ export default function Hero() {
                 />
               </div>
 
+              {/* ── Spotlight glow behind card ── */}
+              <div
+                className="absolute -inset-12 rounded-[3rem] pointer-events-none z-[-1]"
+                style={{
+                  background: "radial-gradient(ellipse at center, rgba(245,240,232,0.7) 0%, transparent 70%)",
+                }}
+              />
+
               {/* ── Frosted Acrylic Panel ── */}
               <div
-                className="relative rounded-[1.1rem] sm:rounded-[1.25rem] md:rounded-[1.4rem]"
-                style={panelGlassStyle}
+                className="relative rounded-xl"
+                style={{
+                  background: "rgba(245,240,232,0.95)",
+                  backdropFilter: "blur(48px) saturate(1.1)",
+                  WebkitBackdropFilter: "blur(48px) saturate(1.1)",
+                  border: "1px solid rgba(0,0,0,0.10)",
+                  boxShadow: "0 6px 24px rgba(0,0,0,0.14), 0 16px 48px rgba(0,0,0,0.10), 0 2px 6px rgba(0,0,0,0.06)",
+                }}
               >
                 {/* Panel grain — satin materiality */}
                 <div
                   className="absolute inset-0 rounded-[inherit] pointer-events-none opacity-[0.07]"
-                  style={frostedGrainStyle}
+                  style={{
+                    backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+                    mixBlendMode: "multiply",
+                  }}
                 />
 
                 <div className="relative px-7 sm:px-9 md:px-10 lg:px-12 pt-12 sm:pt-14 md:pt-16 pb-10 sm:pb-12 md:pb-14">
 
-                  {/* ── Headline: 2 lines ── */}
-                  <h1 className="reveal delay-200" style={{ fontWeight: 600 }}>
-                    <span className="block text-[2.1rem] sm:text-[2.8rem] md:text-[3.3rem] lg:text-[3.9rem] leading-[0.92] tracking-[-0.015em] text-foreground font-[EloquiaDisplay]">
-                      Morning Club
-                    </span>
-                    <span className="block text-[2.1rem] sm:text-[2.8rem] md:text-[3.3rem] lg:text-[3.9rem] leading-[0.92] tracking-[-0.015em] text-foreground font-[EloquiaDisplay]">
-                      Salento
-                    </span>
-                  </h1>
-
-                  {/* ── Manifesto ── */}
-                  <p className="reveal delay-300 mt-5 sm:mt-7 text-[0.95rem] sm:text-[1.05rem] md:text-lg text-foreground/55 font-[SatoshiMedium] leading-relaxed">
+                  {/* ── H2 — Primary card headline ── */}
+                  <p className="reveal delay-300 text-xl sm:text-2xl md:text-[1.75rem] text-foreground font-[SatoshiMedium] leading-snug font-bold">
                     La domenica mattina cambia tono.
                   </p>
 
-                  {/* Micro-caption */}
-                  <p className="reveal delay-300 mt-1 text-[0.55rem] sm:text-[0.6rem] tracking-[0.2em] uppercase text-foreground/35 font-[SatoshiMedium]">
-                    Espresso · Vinyl · People
+                  {/* Metadata */}
+                  <p className="reveal delay-300 mt-3 text-[0.72rem] tracking-[0.18em] uppercase text-slate font-[SatoshiMedium]">
+                    ESPRESSO · VINYL · PEOPLE
                   </p>
 
-                  {/* ── Date + Location ── */}
-                  <div className="reveal delay-400 mt-7 sm:mt-9">
-                    <p className="text-[0.88rem] sm:text-[0.95rem] md:text-base font-[EloquiaDisplay] text-foreground leading-snug">
-                      Domenica 1 Marzo — 10:00
-                    </p>
-                    <p className="text-[0.7rem] sm:text-xs text-blue-gray font-[SatoshiMedium] mt-1">
-                      Martinucci, Lecce
-                    </p>
+                  {/* ── Date + Location + CTA Group ── */}
+                  <div className="reveal delay-400 mt-8 sm:mt-10 bg-cream/60 backdrop-blur-sm rounded-xl p-6 border border-warm-gray/30" style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.04)" }}>
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+                      
+                      {/* Date & Time — left column, clear scan path */}
+                      <div className="flex flex-col gap-1.5">
+                        <div className="flex items-baseline gap-2">
+                            <span className="text-3xl sm:text-4xl font-[EloquiaDisplay] font-bold text-red" style={{ fontVariantNumeric: "tabular-nums" }}>01</span>
+                            <span className="text-lg sm:text-xl font-[EloquiaDisplay] uppercase tracking-[0.18em] text-foreground font-bold">MARZO</span>
+                        </div>
+                        <div className="flex items-center gap-3">
+                            <span className="text-xl sm:text-2xl font-[EloquiaDisplay] font-bold text-foreground" style={{ fontVariantNumeric: "tabular-nums" }}>10:00</span>
+                            <span className="text-[0.72rem] uppercase tracking-[0.18em] text-slate font-[SatoshiMedium]">MARTINUCCI, LECCE</span>
+                        </div>
+                      </div>
+
+                      {/* Arrow cue + CTA — primary action */}
+                      <div className="flex items-center gap-3 w-full sm:w-auto">
+                        <svg className="w-6 h-6 text-red/50 hidden sm:block animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                        <a
+                          href="#iscriviti"
+                          className="inline-flex items-center justify-center bg-red hover:bg-red-dark text-cream px-8 py-3.5 text-sm tracking-[0.16em] uppercase font-[EloquiaDisplay] rounded-xl transition-all duration-200 active:scale-[0.97] min-h-[48px] whitespace-nowrap w-full sm:w-auto text-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
+                          style={{ boxShadow: "0 4px 14px rgba(182, 58, 43, 0.35)" }}
+                        >
+                          Entra in lista
+                        </a>
+                      </div>
+                    </div>
                   </div>
 
-                  {/* ── CTA ── */}
-                  <div className="reveal delay-500 mt-7 sm:mt-9">
-                    <a
-                      href="#iscriviti"
-                      className="inline-flex items-center bg-red hover:bg-red-dark text-cream px-7 py-3.5 sm:px-8 sm:py-4 text-[0.7rem] sm:text-[0.76rem] tracking-[0.16em] uppercase font-[EloquiaDisplay] rounded-lg transition-all duration-200 active:scale-[0.97] min-h-[48px]"
-                      style={{ boxShadow: "3px 3px 0 rgba(0,0,0,0.08)" }}
-                    >
-                      Entra in lista
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-
-              <div
-                className="reveal delay-600 absolute bottom-10 sm:bottom-12 md:bottom-14 z-20"
-                style={{
-                  right: "-6.3rem",
-                  filter: "drop-shadow(1px 2px 5px rgba(0,0,0,0.10))",
-                }}
-              >
-                <div className="flex rounded-2xl overflow-hidden">
-                  {/* 01 / MAR — red */}
-                  <div className="bg-red text-cream px-4 py-2.5 sm:px-5 sm:py-3 text-center flex flex-col items-center justify-center min-w-[3rem] sm:min-w-[3.4rem]">
-                    <span
-                      className="block text-[1.15rem] sm:text-[1.3rem] font-[EloquiaDisplay] leading-none"
-                      style={{ fontVariantNumeric: "tabular-nums" }}
-                    >
-                      01
-                    </span>
-                    <span className="block text-[0.52rem] sm:text-[0.58rem] tracking-[0.06em] uppercase font-[EloquiaDisplay] mt-0.5 opacity-90">
-                      MAR
-                    </span>
-                  </div>
-                  {/* 10:00 — frosted acrylic */}
-                  <div
-                    className="relative text-foreground px-4 py-2.5 sm:px-5 sm:py-3 flex flex-col items-center justify-center"
-                    style={badgeGlassStyle}
-                  >
-                    {/* Grain on glass badge */}
-                    <div
-                      className="absolute inset-0 pointer-events-none opacity-[0.12]"
-                      style={frostedGrainStyle}
-                    />
-                    <span
-                      className="block text-[1.15rem] sm:text-[1.3rem] font-[EloquiaDisplay] leading-none"
-                      style={{ fontVariantNumeric: "tabular-nums" }}
-                    >
-                      10:00
-                    </span>
-                    <span className="block text-[0.28rem] sm:text-[0.32rem] font-[SatoshiMedium] tracking-[0.06em] text-foreground/35 mt-0.5">
-                      mattina
-                    </span>
-                  </div>
                 </div>
               </div>
 
@@ -190,7 +144,7 @@ export default function Hero() {
 
       {/* ── BELOW HERO: manifesto ── */}
       <section className="bg-cream py-14 sm:py-16 md:py-20">
-        <div className="max-w-5xl mx-auto px-6 sm:px-12 md:px-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
           {/* Brand */}
           <h2 className="text-4xl sm:text-7xl md:text-8xl lg:text-9xl text-red leading-[0.85] tracking-tight font-[EloquiaDisplay] uppercase">
             Morning Club
@@ -200,34 +154,34 @@ export default function Hero() {
           </p>
 
           {/* Manifesto — different angle from hero */}
-          <p className="mt-8 sm:mt-10 text-xl sm:text-2xl md:text-3xl font-[SatoshiMedium] text-foreground/80 leading-snug max-w-2xl">
+          <p className="mt-8 sm:mt-10 text-xl sm:text-2xl md:text-3xl font-[SatoshiMedium] text-foreground leading-snug max-w-2xl">
             Non solo un evento. <span className="marker-swipe">Un appuntamento.</span>
           </p>
 
-          {/* Micro-caption */}
-          <p className="mt-4 sm:mt-5 text-[0.7rem] sm:text-[0.75rem] tracking-[0.2em] uppercase text-blue-gray font-[EloquiaDisplay]">
-            Caffè, selezione musicale, persone giuste. Ogni domenica alle 10, nessun rumore inutile.
+          {/* Metadata */}
+          <p className="mt-4 sm:mt-5 text-[0.72rem] tracking-[0.18em] uppercase text-slate font-[SatoshiMedium]">
+            CAFFÈ, SELEZIONE MUSICALE, PERSONE GIUSTE. OGNI DOMENICA ALLE 10, NESSUN RUMORE INUTILE.
           </p>
 
           {/* Badge + Location */}
           <div className="mt-8 sm:mt-10 flex items-center gap-4 flex-wrap">
             <span className="stamp-badge">Coffee &amp; Disco</span>
-            <span className="text-[0.65rem] tracking-[0.2em] uppercase font-[SatoshiMedium] text-blue-gray">
-              Martinucci, Lecce
+            <span className="text-[0.72rem] tracking-[0.18em] uppercase font-[SatoshiMedium] text-slate">
+              MARTINUCCI, LECCE
             </span>
           </div>
 
           {/* Ritual line — mobile only */}
-          <p className="mt-6 text-[0.65rem] tracking-[0.15em] uppercase text-blue-gray/70 font-[EloquiaDisplay] sm:hidden">
-            Ogni domenica alle 10 · Ingresso su invito
+          <p className="mt-6 text-[0.72rem] tracking-[0.18em] uppercase text-slate font-[SatoshiMedium] sm:hidden">
+            OGNI DOMENICA ALLE 10 · INGRESSO SU INVITO
           </p>
 
           {/* CTA — secondary outline */}
           <div className="mt-8 sm:mt-10">
             <a
               href="#iscriviti"
-              className="inline-flex items-center gap-3 border-2 border-red text-red hover:bg-red hover:text-cream px-8 py-4 text-sm sm:text-base tracking-[0.2em] uppercase font-[EloquiaDisplay] transition-all duration-200 active:translate-y-[1px] active:scale-[0.98]"
-              style={{ boxShadow: "3px 3px 0 rgba(0,0,0,0.10)" }}
+              className="inline-flex items-center gap-3 border-2 border-red text-red hover:bg-red hover:text-cream px-8 py-3.5 text-sm tracking-[0.16em] uppercase font-[EloquiaDisplay] rounded-xl transition-all duration-200 active:scale-[0.97] min-h-[48px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
+              style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.06)" }}
             >
               Resta nel giro
               <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24" aria-hidden="true">
@@ -240,7 +194,7 @@ export default function Hero() {
 
       {/* ── RITUAL: 3 chips — desktop only ── */}
       <section className="bg-cream border-t border-warm-gray/30 hidden sm:block">
-        <div className="max-w-5xl mx-auto px-6 sm:px-12 md:px-16 py-8 sm:py-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-8 sm:py-10">
           <div className="grid grid-cols-3 gap-3 sm:gap-6">
             {[
               { label: "10:00", sub: "Ogni domenica" },
@@ -249,19 +203,19 @@ export default function Hero() {
             ].map((item) => (
               <div
                 key={item.label}
-                className="border border-foreground/12 bg-cream px-3 py-5 sm:px-5 sm:py-6 text-center"
-                style={{ boxShadow: "3px 3px 0 rgba(0,0,0,0.05)" }}
+                className="border border-foreground/12 bg-cream rounded-xl px-3 py-5 sm:px-5 sm:py-6 text-center"
+                style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.04)" }}
               >
                 <span className="block text-xl sm:text-3xl md:text-4xl font-[EloquiaDisplay] text-foreground leading-none">
                   {item.label}
                 </span>
-                <span className="block text-[0.6rem] sm:text-[0.65rem] text-blue-gray font-[SatoshiMedium] mt-2 tracking-[0.18em] uppercase">
+                <span className="block text-[0.72rem] text-slate font-[SatoshiMedium] mt-2 tracking-[0.18em] uppercase">
                   {item.sub}
                 </span>
               </div>
             ))}
           </div>
-          <p className="text-center mt-4 text-[0.6rem] sm:text-[0.65rem] tracking-[0.15em] uppercase text-blue-gray font-[EloquiaDisplay]">
+          <p className="text-center mt-4 text-[0.72rem] tracking-[0.18em] uppercase text-slate font-[SatoshiMedium]">
             Prossimo appuntamento → Martinucci, Lecce — Dom 01.03 — 10:00
           </p>
         </div>

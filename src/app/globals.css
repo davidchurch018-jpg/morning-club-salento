@@ -49,15 +49,14 @@
 .stamp-badge {
   display: inline-block;
   border: 2px solid var(--color-red);
-  border-radius: 2px;
-  padding: 0.15em 0.5em;
-  font-family: "EloquiaDisplay", Georgia, serif;
-  font-size: 0.7rem;
+  border-radius: 0.75rem;
+  padding: 0.25em 0.7em;
+  font-family: "SatoshiMedium", system-ui, sans-serif;
+  font-size: 0.72rem;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.18em;
   color: var(--color-red);
-  transform: rotate(-2deg);
-  box-shadow: 3px 3px 0 rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
 
 /* Focus: use focus-visible for keyboard-only ring */

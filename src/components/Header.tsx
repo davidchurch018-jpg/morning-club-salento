@@ -30,11 +30,11 @@ export default function Header() {
       />
 
       <nav
-        className="max-w-6xl mx-auto px-6 sm:px-12 md:px-16 h-full flex items-center justify-between"
+        className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 h-full flex items-center justify-between"
         aria-label="Navigazione principale"
       >
-        {/* Logo left */}
-        <a href="#" className="flex items-center" aria-label="Morning Club Salento — torna su">
+        {/* Logo + Brand name — left */}
+        <a href="#" className="flex items-center gap-3" aria-label="Morning Club Salento — torna su">
           <Image
             src="/logo-illustration.png"
             alt="Morning Club Salento"
@@ -45,32 +45,27 @@ export default function Header() {
             }`}
             priority
           />
+          <span className={`font-[EloquiaDisplay] font-bold uppercase text-red tracking-[0.08em] transition-all duration-300 leading-none ${
+            scrolled ? "text-sm sm:text-base" : "text-base sm:text-lg"
+          }`}>
+            Morning Club Salento
+          </span>
         </a>
 
-        {/* CTA right — refined with state */}
+        {/* CTA right — outline when hero visible, filled when scrolled */}
         <a
           href="#iscriviti"
-          className={`relative text-[0.7rem] sm:text-[0.72rem] tracking-[0.15em] uppercase font-[EloquiaDisplay] transition-all duration-300 active:translate-y-[1px] active:scale-[0.97] min-h-[44px] flex items-center gap-2 border-2 ${
+          className={`relative text-[0.72rem] sm:text-sm tracking-[0.16em] uppercase font-[EloquiaDisplay] transition-all duration-300 active:scale-[0.97] min-h-[48px] flex items-center gap-2 px-8 py-3.5 rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red ${
             scrolled
-              ? "border-red text-red hover:bg-red hover:text-cream focus-visible:bg-red focus-visible:text-cream px-5 py-2.5"
-              : "bg-foreground/80 border-foreground/60 backdrop-blur-[3px] text-cream hover:bg-foreground hover:border-foreground focus-visible:bg-foreground focus-visible:border-foreground px-6 py-2.5"
+              ? "bg-red text-cream hover:bg-red-dark"
+              : "border-2 border-red text-red hover:bg-red hover:text-cream bg-transparent"
           }`}
-          style={{
-            transform: "rotate(-1deg)",
-            boxShadow: scrolled ? "3px 3px 0 rgba(0,0,0,0.08)" : "3px 3px 0 rgba(0,0,0,0.18)",
-            ...(!scrolled ? { textShadow: "0 1px 4px rgba(0,0,0,0.3)" } : {}),
-          }}
+          style={{ boxShadow: scrolled ? "0 4px 14px rgba(182, 58, 43, 0.35)" : "none" }}
         >
-          Iscriviti
-          <svg className="w-3 h-3 opacity-60" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24" aria-hidden="true">
+          Entra in lista
+          <svg className="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24" aria-hidden="true">
             <path d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
-          {/* Stamp notch */}
-          <span
-            className={`pointer-events-none absolute -top-[5px] left-3 h-[1.5px] w-4 transition-colors duration-300 ${
-              scrolled ? "bg-red/60" : "bg-cream/50"
-            }`}
-          />
         </a>
       </nav>
     </header>
