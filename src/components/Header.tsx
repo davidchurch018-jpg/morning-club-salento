@@ -45,7 +45,7 @@ export default function Header() {
             }`}
             priority
           />
-          <span className={`font-[EloquiaDisplay] font-bold uppercase text-red tracking-[0.08em] transition-all duration-300 leading-none ${
+          <span className={`hidden sm:inline font-[EloquiaDisplay] font-bold uppercase text-red tracking-[0.08em] transition-all duration-300 leading-none ${
             scrolled ? "text-sm sm:text-base" : "text-base sm:text-lg"
           }`}>
             Morning Club Salento
@@ -55,7 +55,7 @@ export default function Header() {
         {/* CTA right — outline when hero visible, filled when scrolled */}
         <a
           href="#iscriviti"
-          className={`relative text-[0.72rem] sm:text-sm tracking-[0.16em] uppercase font-[EloquiaDisplay] transition-all duration-300 active:scale-[0.97] min-h-[48px] flex items-center gap-2 px-8 py-3.5 rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red ${
+          className={`relative text-[0.65rem] sm:text-sm tracking-[0.14em] sm:tracking-[0.16em] uppercase font-[EloquiaDisplay] transition-all duration-300 active:scale-[0.97] min-h-[44px] sm:min-h-[48px] flex items-center gap-1.5 sm:gap-2 px-4 sm:px-8 py-2.5 sm:py-3.5 rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red ${
             scrolled
               ? "bg-red text-cream hover:bg-red-dark"
               : "border-2 border-red text-red hover:bg-red hover:text-cream bg-transparent"
@@ -63,9 +63,11 @@ export default function Header() {
           style={{ boxShadow: scrolled ? "0 4px 14px rgba(182, 58, 43, 0.35)" : "none" }}
         >
           Entra in lista
-          <svg className="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
+          <span className="arrow-bounce hidden sm:inline">
+            <svg className="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </span>
         </a>
       </nav>
     </header>

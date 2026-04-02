@@ -193,3 +193,62 @@ body {
   z-index: -1;
   overflow: hidden;
 }
+
+/* ── Scroll-driven reveal (IntersectionObserver fallback) ── */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Bouncing arrow hint ── */
+@keyframes gentleBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(3px); }
+}
+.arrow-bounce svg {
+  animation: gentleBounce 2s ease-in-out infinite;
+}
+
+/* ── Ritual chip cards — hover lift ── */
+.chip-card {
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.chip-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+/* ── Ritual tags — hover accent ── */
+.ritual-tag {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.ritual-tag:hover {
+  background-color: var(--color-red);
+  color: var(--color-cream);
+  border-color: var(--color-red);
+}
+
+/* ── Section divider — elegant line ── */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-warm-gray), transparent);
+}
+
+/* ── Mobile horizontal scroll ticker ── */
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.ticker-track {
+  animation: ticker 20s linear infinite;
+}
+.ticker-track:hover {
+  animation-play-state: paused;
+}

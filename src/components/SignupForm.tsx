@@ -7,6 +7,7 @@ interface FieldErrors {
   nome?: string;
   cognome?: string;
   email?: string;
+  telefono?: string;
   privacy?: string;
 }
 
@@ -17,6 +18,11 @@ function validate(data: FormData, privacy: boolean): FieldErrors {
     errors.email = "Ci serve la tua email per scriverti";
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
     errors.email = "Mmm, controlla l'email — sembra manchi qualcosa";
+  }
+  if (!data.telefono?.trim()) {
+    errors.telefono = "Inserisci il tuo numero di telefono";
+  } else if (!/^[\d\s\+\-().]{6,20}$/.test(data.telefono.trim())) {
+    errors.telefono = "Controlla il numero — sembra non valido";
   }
   if (!privacy) errors.privacy = "Ci serve il tuo ok (solo cose belle, promesso)";
   return errors;
@@ -29,6 +35,10 @@ function validateField(field: string, value: string, privacy?: boolean): string 
     case "email":
       if (!value.trim()) return "Ci serve la tua email per scriverti";
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return "Mmm, controlla l'email — sembra manchi qualcosa";
+      return undefined;
+    case "telefono":
+      if (!value.trim()) return "Inserisci il tuo numero di telefono";
+      if (!/^[\d\s\+\-().]{6,20}$/.test(value.trim())) return "Controlla il numero — sembra non valido";
       return undefined;
     case "privacy": return !privacy ? "Ci serve il tuo ok per scriverti (solo cose belle, promesso)" : undefined;
     default: return undefined;
@@ -76,7 +86,7 @@ export default function SignupForm() {
 
     const errs = validate(form, privacy);
     setErrors(errs);
-    setTouched({ nome: true, email: true, privacy: true });
+    setTouched({ nome: true, email: true, telefono: true, privacy: true });
     if (Object.keys(errs).length > 0) return;
 
     setStatus("loading");
@@ -105,6 +115,9 @@ export default function SignupForm() {
 
   return (
     <section id="iscriviti" className="scroll-mt-20 py-12 sm:py-22 bg-cream">
+      {/* Elegant divider */}
+      <div className="section-divider max-w-xs mx-auto mb-10 sm:mb-14" />
+
       <div className="max-w-lg mx-auto px-6">
         {/* Section title */}
         <div className="text-center mb-8">
@@ -147,6 +160,20 @@ export default function SignupForm() {
             onBlur={handleBlur("email")}
             error={errors.email}
             autoComplete="email"
+            required
+          />
+
+          <Field
+            label="Telefono"
+            id="telefono"
+            type="tel"
+            inputMode="tel"
+            value={form.telefono ?? ""}
+            onChange={set("telefono")}
+            onBlur={handleBlur("telefono")}
+            error={errors.telefono}
+            autoComplete="tel"
+            placeholder="+39 333 1234567"
             required
           />
 
@@ -272,7 +299,7 @@ function Field({
         placeholder={placeholder}
         aria-invalid={!!error}
         aria-describedby={error ? `${id}-error` : undefined}
-        className={`w-full px-3.5 py-2.5 bg-white/65 border border-black/20 text-foreground text-[15px] placeholder:text-neutral-400 transition-all duration-150 outline-none focus:border-red focus:bg-white focus:shadow-[0_0_0_4px_rgba(224,60,40,0.12)] ${
+        className={`w-full px-3.5 py-3 sm:py-2.5 bg-white/65 border border-black/20 text-foreground text-[16px] placeholder:text-neutral-400 rounded-lg transition-all duration-150 outline-none focus:border-red focus:bg-white focus:shadow-[0_0_0_4px_rgba(224,60,40,0.12)] ${
           error ? "border-red bg-white" : ""
         }`}
       />

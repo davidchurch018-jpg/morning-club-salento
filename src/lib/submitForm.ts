@@ -2,7 +2,7 @@ export interface FormData {
   nome: string;
   cognome: string;
   email: string;
-  telefono?: string;
+  telefono: string;
   instagram?: string;
 }
 
