@@ -138,6 +138,19 @@ export default function Hero() {
                       </span>
                     ))}
                   </div>
+
+                  {/* DJ Line Up — editorial poster style */}
+                  <div className="reveal delay-500 mt-7">
+                    <p className="text-[0.58rem] tracking-[0.25em] uppercase text-red/60 font-[SatoshiMedium] mb-1.5">Selectors</p>
+                    <div className="dj-lineup flex items-baseline gap-x-2 gap-y-0 flex-wrap leading-none">
+                      {["Alex De Rio", "Zoso", "Giuseppe Scarlino"].map((dj, i) => (
+                        <span key={dj} className="dj-name inline-flex items-baseline gap-2">
+                          <span className="text-base sm:text-lg font-[EloquiaDisplay] font-bold uppercase tracking-[0.04em] text-foreground/90">{dj}</span>
+                          {i < 2 && <span className="text-red/40 text-xs font-[EloquiaDisplay] select-none" aria-hidden="true">×</span>}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
 
                 {/* ── PERFORATION LINE — structural ticket divider ── */}
@@ -151,10 +164,10 @@ export default function Hero() {
 
                     {/* Left: Date block */}
                     <div className="flex items-baseline gap-3 shrink-0">
-                      <span className="text-5xl sm:text-6xl font-[EloquiaDisplay] font-bold text-red leading-none" style={{ fontVariantNumeric: "tabular-nums" }}>01</span>
+                      <span className="text-5xl sm:text-6xl font-[EloquiaDisplay] font-bold text-red leading-none" style={{ fontVariantNumeric: "tabular-nums" }}>12</span>
                       <div className="flex flex-col gap-0.5">
-                        <span className="text-lg sm:text-xl font-[EloquiaDisplay] uppercase tracking-[0.14em] text-foreground font-bold leading-none">MARZO</span>
-                        <span className="text-xl sm:text-2xl font-[EloquiaDisplay] font-bold text-foreground leading-none" style={{ fontVariantNumeric: "tabular-nums" }}>10:00</span>
+                        <span className="text-lg sm:text-xl font-[EloquiaDisplay] uppercase tracking-[0.14em] text-foreground font-bold leading-none">APRILE</span>
+                        <span className="text-xl sm:text-2xl font-[EloquiaDisplay] font-bold text-foreground leading-none" style={{ fontVariantNumeric: "tabular-nums" }}>10–15</span>
                         <span className="text-[0.68rem] tracking-[0.18em] uppercase text-slate font-[SatoshiMedium] mt-0.5">DOMENICA</span>
                       </div>
                     </div>
@@ -215,7 +228,7 @@ export default function Hero() {
           {/* Metadata */}
           <p className="mt-4 sm:mt-5 text-[0.62rem] sm:text-[0.72rem] tracking-[0.14em] sm:tracking-[0.18em] uppercase text-slate font-[SatoshiMedium] leading-relaxed">
             CAFFÈ DI SELEZIONE · VINILI · PERSONE GIUSTE<br className="sm:hidden" />
-            <span className="hidden sm:inline"> · </span>OGNI DOMENICA ALLE 10 · NESSUN RUMORE INUTILE
+            <span className="hidden sm:inline"> · </span>DOMENICA 12 APRILE · 10:00–15:00 · NESSUN RUMORE INUTILE
           </p>
 
           {/* Badge + Location */}
@@ -228,7 +241,7 @@ export default function Hero() {
 
           {/* Ritual line — mobile only */}
           <p className="mt-6 text-[0.72rem] tracking-[0.18em] uppercase text-slate font-[SatoshiMedium] sm:hidden">
-            OGNI DOMENICA ALLE 10 · INGRESSO SU INVITO
+            DOM 12 APRILE · 10:00–15:00 · INGRESSO SU INVITO
           </p>
 
           {/* CTA — secondary outline */}
@@ -254,7 +267,7 @@ export default function Hero() {
         <div ref={chipsRef} className="scroll-reveal max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-8 sm:py-10">
           <div className="grid grid-cols-3 gap-2 sm:gap-6">
             {[
-              { label: "10:00", sub: "Ogni domenica" },
+              { label: "10–15", sub: "Dom 12 Aprile" },
               { label: "Lecce", sub: "Location a rotazione" },
               { label: "Lista", sub: "Ingresso su invito" },
             ].map((item) => (
@@ -273,7 +286,7 @@ export default function Hero() {
             ))}
           </div>
           <p className="text-center mt-4 text-[0.6rem] sm:text-[0.72rem] tracking-[0.14em] sm:tracking-[0.18em] uppercase text-slate font-[SatoshiMedium]">
-            Prossimo appuntamento → Martinucci, Lecce — Dom 01.03 — 10:00
+            Prossimo appuntamento → Martinucci, Lecce — Dom 12.04 — 10:00–15:00
           </p>
         </div>
       </section>

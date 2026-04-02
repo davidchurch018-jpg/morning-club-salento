@@ -235,6 +235,15 @@ body {
   border-color: var(--color-red);
 }
 
+/* ── DJ lineup — editorial hover ── */
+.dj-name .text-foreground\/90 {
+  transition: color 0.2s ease, letter-spacing 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.dj-name:hover .text-foreground\/90 {
+  color: var(--color-red);
+  letter-spacing: 0.08em;
+}
+
 /* ── Section divider — elegant line ── */
 .section-divider {
   height: 1px;

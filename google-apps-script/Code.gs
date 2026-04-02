@@ -13,9 +13,35 @@
 
 var SHEET_ID = "1aSs3-5x79W1-N3B1NA0ZLPTTrxPp2U7LYDzfmB4nCJw";
 
+/** Strip HTML tags and limit length */
+function sanitize(val, maxLen) {
+  if (!val || typeof val !== "string") return "";
+  return val.replace(/<[^>]*>/g, "").trim().substring(0, maxLen || 200);
+}
+
 function doPost(e) {
   try {
     var data = JSON.parse(e.postData.contents);
+
+    // Server-side validation
+    var nome = sanitize(data.nome, 100);
+    var cognome = sanitize(data.cognome, 100);
+    var email = sanitize(data.email, 150);
+    var telefono = sanitize(data.telefono, 30);
+    var instagram = sanitize(data.instagram, 60);
+
+    if (!nome || !email) {
+      return ContentService.createTextOutput(
+        JSON.stringify({ result: "error", error: "Campi obbligatori mancanti" })
+      ).setMimeType(ContentService.MimeType.JSON);
+    }
+
+    // Basic email format check
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return ContentService.createTextOutput(
+        JSON.stringify({ result: "error", error: "Email non valida" })
+      ).setMimeType(ContentService.MimeType.JSON);
+    }
 
     var ss = SpreadsheetApp.openById(SHEET_ID);
     var sheet = ss.getSheets()[0]; // primo foglio
@@ -25,13 +51,24 @@ function doPost(e) {
       sheet.appendRow(["Timestamp", "Nome", "Cognome", "Email", "Telefono", "Instagram"]);
     }
 
+    // Check for duplicate email
+    var emailCol = sheet.getRange(1, 4, sheet.getLastRow()).getValues();
+    for (var i = 1; i < emailCol.length; i++) {
+      if (emailCol[i][0].toString().toLowerCase() === email.toLowerCase()) {
+        return ContentService.createTextOutput(
+          JSON.stringify({ result: "success" })
+        ).setMimeType(ContentService.MimeType.JSON);
+        // Silent success — don't reveal if email exists (privacy)
+      }
+    }
+
     sheet.appendRow([
       new Date().toISOString(),
-      data.nome || "",
-      data.cognome || "",
-      data.email || "",
-      data.telefono || "",
-      data.instagram || "",
+      nome,
+      cognome,
+      email,
+      telefono,
+      instagram,
     ]);
 
     return ContentService.createTextOutput(

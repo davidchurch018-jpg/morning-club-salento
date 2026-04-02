@@ -14,6 +14,7 @@ interface FieldErrors {
 function validate(data: FormData, privacy: boolean): FieldErrors {
   const errors: FieldErrors = {};
   if (!data.nome.trim()) errors.nome = "Inserisci il tuo nome";
+  if (!data.cognome.trim()) errors.cognome = "Inserisci il tuo cognome";
   if (!data.email.trim()) {
     errors.email = "Ci serve la tua email per scriverti";
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
@@ -86,7 +87,7 @@ export default function SignupForm() {
 
     const errs = validate(form, privacy);
     setErrors(errs);
-    setTouched({ nome: true, email: true, telefono: true, privacy: true });
+    setTouched({ nome: true, cognome: true, email: true, telefono: true, privacy: true });
     if (Object.keys(errs).length > 0) return;
 
     setStatus("loading");
@@ -137,17 +138,29 @@ export default function SignupForm() {
             <input ref={honeypotRef} id="_hp" name="_gotcha" type="text" tabIndex={-1} autoComplete="off" />
           </div>
 
-          {/* Nome */}
-          <Field
-            label="Nome"
-            id="nome"
-            value={form.nome}
-            onChange={set("nome")}
-            onBlur={handleBlur("nome")}
-            error={errors.nome}
-            autoComplete="given-name"
-            required
-          />
+          {/* Nome + Cognome — side by side on larger screens */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
+            <Field
+              label="Nome"
+              id="nome"
+              value={form.nome}
+              onChange={set("nome")}
+              onBlur={handleBlur("nome")}
+              error={errors.nome}
+              autoComplete="given-name"
+              required
+            />
+            <Field
+              label="Cognome"
+              id="cognome"
+              value={form.cognome}
+              onChange={set("cognome")}
+              onBlur={handleBlur("cognome")}
+              error={errors.cognome}
+              autoComplete="family-name"
+              required
+            />
+          </div>
 
           <Field
             label="Email"
